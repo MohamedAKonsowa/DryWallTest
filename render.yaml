@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: pro-drywall
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: CONTACT_EMAIL
+        value: mkonma647@gmail.com
+      - key: CONTACT_PHONE
+        value: "+1 5025462608"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false

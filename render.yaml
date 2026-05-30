@@ -9,7 +9,7 @@ services:
       - key: NODE_VERSION
         value: 20
       - key: CONTACT_EMAIL
-        value: mkonma647@gmail.com
+        value: info@drywall-contractors.org
       - key: CONTACT_PHONE
         value: "+1 5025462608"
       - key: WEB3FORMS_ACCESS_KEY

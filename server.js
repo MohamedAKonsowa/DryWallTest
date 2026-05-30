@@ -6,7 +6,7 @@ const nodemailer = require('nodemailer');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'mkonma647@gmail.com';
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'info@drywall-contractors.org';
 const CONTACT_PHONE = process.env.CONTACT_PHONE || '+1 5025462608';
 
 app.use(express.json());

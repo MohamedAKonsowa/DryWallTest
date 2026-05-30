@@ -355,6 +355,10 @@ a {
   color: var(--color-primary);
 }
 
+.stat__number--text {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
 .stat__label {
   font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.7);
@@ -519,6 +523,15 @@ a {
 .contact__item:hover {
   border-color: var(--color-primary);
   box-shadow: var(--shadow);
+}
+
+.contact__item--static {
+  cursor: default;
+}
+
+.contact__item--static:hover {
+  border-color: var(--color-border);
+  box-shadow: none;
 }
 
 .contact__item-icon {

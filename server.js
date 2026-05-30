@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const SITE_URL = process.env.SITE_URL || 'https://louisvilledrywallpaints.com';
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'info@drywall-contractors.org';
 const CONTACT_PHONE = process.env.CONTACT_PHONE || '+1 5025462608';
 
@@ -63,6 +64,7 @@ app.get('/api/config', (_req, res) => {
     phone: CONTACT_PHONE,
     phoneLink: CONTACT_PHONE.replace(/\s/g, ''),
     web3formsKey: process.env.WEB3FORMS_ACCESS_KEY || null,
+    siteUrl: SITE_URL,
   });
 });
 

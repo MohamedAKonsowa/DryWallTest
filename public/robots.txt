@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://drywall-contractors.org/sitemap.xml
+Sitemap: https://louisvilledrywallpaints.com/sitemap.xml

@@ -12,7 +12,15 @@ const CONTACT_PHONE = process.env.CONTACT_PHONE || '+1 5025462608';
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const SMTP_TIMEOUT_MS = 15000;
+
 function createTransporter() {
+  const timeout = {
+    connectionTimeout: SMTP_TIMEOUT_MS,
+    greetingTimeout: SMTP_TIMEOUT_MS,
+    socketTimeout: SMTP_TIMEOUT_MS,
+  };
+
   if (process.env.SMTP_HOST) {
     return nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -22,6 +30,7 @@ function createTransporter() {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      ...timeout,
     });
   }
 
@@ -32,10 +41,41 @@ function createTransporter() {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      ...timeout,
     });
   }
 
   return null;
+}
+
+async function sendViaWeb3Forms({ name, email, phone, message }) {
+  const res = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      access_key: process.env.WEB3FORMS_ACCESS_KEY,
+      subject: `New Drywall Inquiry from ${name.trim()}`,
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone?.trim() || '',
+      message: message.trim(),
+    }),
+    signal: AbortSignal.timeout(SMTP_TIMEOUT_MS),
+  });
+
+  const data = await res.json();
+  if (!res.ok || !data.success) {
+    throw new Error(data.message || 'Web3Forms request failed');
+  }
+}
+
+async function sendViaSmtp(mailOptions) {
+  const transporter = createTransporter();
+  if (!transporter) {
+    throw new Error('SMTP not configured');
+  }
+
+  await transporter.sendMail(mailOptions);
 }
 
 app.get('/api/config', (_req, res) => {
@@ -64,16 +104,6 @@ app.post('/api/contact', async (req, res) => {
     });
   }
 
-  const transporter = createTransporter();
-
-  if (!transporter) {
-    return res.status(503).json({
-      success: false,
-      error:
-        'Email service is not configured yet. Please call us directly or email us using the contact info above.',
-    });
-  }
-
   const mailOptions = {
     from: process.env.SMTP_USER || CONTACT_EMAIL,
     to: CONTACT_EMAIL,
@@ -99,8 +129,27 @@ app.post('/api/contact', async (req, res) => {
     `,
   };
 
+  const hasWeb3Forms = Boolean(process.env.WEB3FORMS_ACCESS_KEY);
+  const hasSmtp = Boolean(
+    !process.env.WEB3FORMS_ACCESS_KEY &&
+      (process.env.SMTP_HOST || (process.env.SMTP_USER && process.env.SMTP_PASS))
+  );
+
+  if (!hasWeb3Forms && !hasSmtp) {
+    return res.status(503).json({
+      success: false,
+      error:
+        'Email service is not configured yet. Please call us directly or email us using the contact info above.',
+    });
+  }
+
   try {
-    await transporter.sendMail(mailOptions);
+    if (hasWeb3Forms) {
+      await sendViaWeb3Forms({ name, email, phone, message });
+    } else {
+      await sendViaSmtp(mailOptions);
+    }
+
     res.json({ success: true, message: 'Thank you! Your message has been sent.' });
   } catch (err) {
     console.error('Email send error:', err.message);

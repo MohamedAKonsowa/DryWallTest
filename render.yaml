@@ -12,6 +12,8 @@ services:
         value: mkonma647@gmail.com
       - key: CONTACT_PHONE
         value: "+1 5025462608"
+      - key: WEB3FORMS_ACCESS_KEY
+        sync: false
       - key: SMTP_USER
         sync: false
       - key: SMTP_PASS

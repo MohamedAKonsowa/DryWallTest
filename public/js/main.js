@@ -114,12 +114,21 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 25000);
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
+
+      const contentType = res.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error('Invalid server response');
+      }
 
       const data = await res.json();
 
@@ -131,10 +140,14 @@
         formStatus.textContent = data.error || 'Something went wrong. Please try again.';
         formStatus.className = 'form-status error';
       }
-    } catch (_) {
-      formStatus.textContent = 'Network error. Please call us directly.';
+    } catch (err) {
+      const timedOut = err instanceof DOMException && err.name === 'AbortError';
+      formStatus.textContent = timedOut
+        ? 'Request timed out. The server may be waking up — please try again in a moment or call us directly.'
+        : 'Network error. Please call us directly.';
       formStatus.className = 'form-status error';
     } finally {
+      clearTimeout(timeoutId);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send Message';
     }

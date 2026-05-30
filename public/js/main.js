@@ -71,6 +71,44 @@
     setEmailLinks(config.email);
   }
 
+  async function submitViaWeb3Forms(payload, accessKey) {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: accessKey,
+        subject: `New Drywall Inquiry from ${payload.name}`,
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone || '',
+        message: payload.message,
+      }),
+    });
+
+    const data = await res.json();
+    if (!data.success) {
+      throw new Error(data.message || 'Unable to send message.');
+    }
+
+    return data;
+  }
+
+  async function submitViaServer(payload, signal) {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal,
+    });
+
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      throw new Error('Invalid server response');
+    }
+
+    return res.json();
+  }
+
   function closeNav() {
     nav.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
@@ -118,19 +156,14 @@
     const timeoutId = setTimeout(() => controller.abort(), 25000);
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-      });
+      let data;
 
-      const contentType = res.headers.get('content-type') || '';
-      if (!contentType.includes('application/json')) {
-        throw new Error('Invalid server response');
+      if (config.web3formsKey) {
+        data = await submitViaWeb3Forms(payload, config.web3formsKey);
+        data = { success: true, message: data.message || 'Thank you! Your message has been sent.' };
+      } else {
+        data = await submitViaServer(payload, controller.signal);
       }
-
-      const data = await res.json();
 
       if (data.success) {
         formStatus.textContent = data.message;
@@ -143,8 +176,8 @@
     } catch (err) {
       const timedOut = err instanceof DOMException && err.name === 'AbortError';
       formStatus.textContent = timedOut
-        ? 'Request timed out. The server may be waking up — please try again in a moment or call us directly.'
-        : 'Network error. Please call us directly.';
+        ? 'Request timed out. Please try again in a moment or call us directly.'
+        : err.message || 'Network error. Please call us directly.';
       formStatus.className = 'form-status error';
     } finally {
       clearTimeout(timeoutId);

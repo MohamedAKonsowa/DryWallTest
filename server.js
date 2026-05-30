@@ -48,27 +48,6 @@ function createTransporter() {
   return null;
 }
 
-async function sendViaWeb3Forms({ name, email, phone, message }) {
-  const res = await fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      access_key: process.env.WEB3FORMS_ACCESS_KEY,
-      subject: `New Drywall Inquiry from ${name.trim()}`,
-      name: name.trim(),
-      email: email.trim(),
-      phone: phone?.trim() || '',
-      message: message.trim(),
-    }),
-    signal: AbortSignal.timeout(SMTP_TIMEOUT_MS),
-  });
-
-  const data = await res.json();
-  if (!res.ok || !data.success) {
-    throw new Error(data.message || 'Web3Forms request failed');
-  }
-}
-
 async function sendViaSmtp(mailOptions) {
   const transporter = createTransporter();
   if (!transporter) {
@@ -83,6 +62,7 @@ app.get('/api/config', (_req, res) => {
     email: CONTACT_EMAIL,
     phone: CONTACT_PHONE,
     phoneLink: CONTACT_PHONE.replace(/\s/g, ''),
+    web3formsKey: process.env.WEB3FORMS_ACCESS_KEY || null,
   });
 });
 
@@ -129,27 +109,20 @@ app.post('/api/contact', async (req, res) => {
     `,
   };
 
-  const hasWeb3Forms = Boolean(process.env.WEB3FORMS_ACCESS_KEY);
   const hasSmtp = Boolean(
-    !process.env.WEB3FORMS_ACCESS_KEY &&
-      (process.env.SMTP_HOST || (process.env.SMTP_USER && process.env.SMTP_PASS))
+    process.env.SMTP_HOST || (process.env.SMTP_USER && process.env.SMTP_PASS)
   );
 
-  if (!hasWeb3Forms && !hasSmtp) {
+  if (!hasSmtp) {
     return res.status(503).json({
       success: false,
       error:
-        'Email service is not configured yet. Please call us directly or email us using the contact info above.',
+        'Email service is not configured for server-side delivery. Use the contact form on the live site.',
     });
   }
 
   try {
-    if (hasWeb3Forms) {
-      await sendViaWeb3Forms({ name, email, phone, message });
-    } else {
-      await sendViaSmtp(mailOptions);
-    }
-
+    await sendViaSmtp(mailOptions);
     res.json({ success: true, message: 'Thank you! Your message has been sent.' });
   } catch (err) {
     console.error('Email send error:', err.message);

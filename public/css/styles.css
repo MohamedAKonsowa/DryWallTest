@@ -459,6 +459,121 @@ a {
   color: rgba(255, 255, 255, 0.85);
 }
 
+/* Service Areas */
+.areas__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.areas__group {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+}
+
+.areas__heading {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.areas__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem;
+}
+
+.areas__list li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.areas__list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.areas__note {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.areas__note a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* FAQ */
+.faq__list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq__item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.faq__item[open] {
+  border-color: var(--color-primary);
+}
+
+.faq__question {
+  padding: 1.25rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq__question::after {
+  content: '+';
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.faq__item[open] .faq__question::after {
+  content: '−';
+}
+
+.faq__answer {
+  padding: 0 1.5rem 1.25rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.faq__answer a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
 /* CTA Banner */
 .cta-banner {
   background: var(--color-primary);
@@ -643,7 +758,9 @@ a {
 
 .footer__links {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  justify-content: center;
 }
 
 .footer__links a {
@@ -657,6 +774,10 @@ a {
 
 /* Tablet+ */
 @media (min-width: 640px) {
+  .areas__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .services__grid {
     grid-template-columns: repeat(2, 1fr);
   }

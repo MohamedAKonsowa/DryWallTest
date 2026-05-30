@@ -3,48 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pro Drywall — Louisville-based drywall contractors serving Kentucky and Southern Indiana. Installation, repair, and finishing. Free estimates. Call +1 502-546-2608.">
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="Pro Drywall — trusted drywall contractors in Louisville, KY. Installation, repair &amp; finishing across Kentucky and Southern Indiana. Free estimates. Call (502) 546-2608.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="geo.region" content="US-KY">
+  <meta name="geo.placename" content="Louisville">
   <link rel="canonical" href="https://drywall-contractors.org/">
-  <title>Pro Drywall | Louisville Drywall Contractors | KY &amp; Indiana</title>
+  <title>Drywall Contractors Louisville KY | Pro Drywall | KY &amp; Indiana</title>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://drywall-contractors.org/">
-  <meta property="og:title" content="Pro Drywall | Louisville Drywall Contractors">
-  <meta property="og:description" content="Based in Louisville, KY. Serving Kentucky and Southern Indiana with professional drywall installation, repair, and finishing.">
+  <meta property="og:site_name" content="Pro Drywall">
+  <meta property="og:title" content="Drywall Contractors in Louisville, KY | Pro Drywall">
+  <meta property="og:description" content="Louisville drywall installation, repair, and finishing. Serving Kentucky and Southern Indiana. Free estimates — call (502) 546-2608.">
   <meta property="og:locale" content="en_US">
 
-  <!-- Google Search Console: add your verification meta tag below when Google gives you the code -->
-  <!-- <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE"> -->
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Drywall Contractors Louisville KY | Pro Drywall">
+  <meta name="twitter:description" content="Professional drywall services in Louisville, Kentucky and Southern Indiana. Free estimates available.">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "name": "Pro Drywall",
-    "url": "https://drywall-contractors.org",
-    "telephone": "+15025462608",
-    "email": "info@drywall-contractors.org",
-    "description": "Louisville-based drywall contractors serving Kentucky and Southern Indiana. Installation, repair, and finishing. Free estimates.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Louisville",
-      "addressRegion": "KY",
-      "addressCountry": "US"
-    },
-    "areaServed": [
-      { "@type": "City", "name": "Louisville" },
-      { "@type": "State", "name": "Kentucky" },
-      { "@type": "State", "name": "Indiana" }
-    ],
-    "priceRange": "$$",
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "08:00",
-      "closes": "18:00"
-    }
+    "@graph": [
+      {
+        "@type": "HomeAndConstructionBusiness",
+        "@id": "https://drywall-contractors.org/#business",
+        "name": "Pro Drywall",
+        "url": "https://drywall-contractors.org",
+        "telephone": "+15025462608",
+        "email": "info@drywall-contractors.org",
+        "description": "Professional drywall contractors based in Louisville, Kentucky. We provide drywall installation, repair, and finishing for residential and commercial clients across Kentucky and Southern Indiana.",
+        "image": "https://drywall-contractors.org/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Louisville",
+          "addressRegion": "KY",
+          "postalCode": "40202",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 38.2527,
+          "longitude": -85.7585
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Louisville", "containedInPlace": { "@type": "State", "name": "Kentucky" } },
+          { "@type": "City", "name": "Jeffersonville", "containedInPlace": { "@type": "State", "name": "Indiana" } },
+          { "@type": "City", "name": "New Albany", "containedInPlace": { "@type": "State", "name": "Indiana" } },
+          { "@type": "City", "name": "Clarksville", "containedInPlace": { "@type": "State", "name": "Indiana" } },
+          { "@type": "City", "name": "La Grange", "containedInPlace": { "@type": "State", "name": "Kentucky" } },
+          { "@type": "City", "name": "Shelbyville", "containedInPlace": { "@type": "State", "name": "Kentucky" } },
+          { "@type": "State", "name": "Kentucky" },
+          { "@type": "State", "name": "Indiana" }
+        ],
+        "priceRange": "$$",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Drywall Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drywall Installation", "description": "New drywall hung, taped, mudded, and finished for renovations and new construction." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drywall Repair", "description": "Hole patching, crack repair, water damage restoration, and texture matching." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drywall Finishing", "description": "Level 4 and Level 5 finishes, skim coating, and paint-ready surfaces." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Drywall", "description": "Drywall services for offices, retail spaces, and multi-unit buildings." } }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://drywall-contractors.org/#website",
+        "url": "https://drywall-contractors.org",
+        "name": "Pro Drywall",
+        "description": "Louisville drywall contractors serving Kentucky and Southern Indiana",
+        "publisher": { "@id": "https://drywall-contractors.org/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://drywall-contractors.org/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you provide drywall services in Louisville, Kentucky?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Pro Drywall is based in Louisville, KY and serves the greater Louisville metro area with drywall installation, repair, and finishing for homes and businesses."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work in Southern Indiana?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We serve Southern Indiana including Jeffersonville, New Albany, Clarksville, and surrounding communities across the Ohio River region."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What drywall services do you offer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We offer drywall installation, drywall repair, Level 4 and Level 5 finishing, skim coating, texture matching, and commercial drywall for residential and business projects."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get a free drywall estimate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Call us at (502) 546-2608, email info@drywall-contractors.org, or fill out the contact form on our website. We provide free on-site estimates across Kentucky and Southern Indiana."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +133,7 @@
 <body>
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="#" class="logo">
+      <a href="https://drywall-contractors.org/" class="logo" aria-label="Pro Drywall — Louisville drywall contractors">
         <span class="logo__icon" aria-hidden="true">▣</span>
         <span class="logo__text">Pro Drywall</span>
       </a>
@@ -66,7 +144,9 @@
       </button>
       <nav class="nav" id="nav">
         <a href="#services" class="nav__link">Services</a>
+        <a href="#areas" class="nav__link">Service Area</a>
         <a href="#about" class="nav__link">About</a>
+        <a href="#faq" class="nav__link">FAQ</a>
         <a href="#contact" class="nav__link">Contact</a>
         <a href="#" class="btn btn--primary nav__cta" id="headerCallBtn">Call Now</a>
       </nav>
@@ -78,10 +158,10 @@
       <div class="hero__overlay"></div>
       <div class="container hero__content">
         <p class="hero__eyebrow">Louisville, KY · Serving KY &amp; Southern Indiana</p>
-        <h1 class="hero__title">Quality Drywall Work You Can Trust</h1>
+        <h1 class="hero__title">Louisville Drywall Contractors You Can Trust</h1>
         <p class="hero__subtitle">
-          Based in Louisville, we serve homeowners and businesses across Kentucky and Southern Indiana —
-          from new construction to repairs and flawless finishes.
+          Pro Drywall is based in Louisville, KY — providing professional drywall installation, repair,
+          and finishing for homeowners and businesses across Kentucky and Southern Indiana.
         </p>
         <div class="hero__actions">
           <a href="#contact" class="btn btn--primary btn--lg">Get a Free Estimate</a>
@@ -108,39 +188,77 @@
       <div class="container">
         <div class="section__header">
           <p class="section__eyebrow">What We Do</p>
-          <h2 class="section__title">Our Services</h2>
-          <p class="section__desc">Complete drywall solutions for homes and businesses across Louisville, Kentucky, and Southern Indiana.</p>
+          <h2 class="section__title">Drywall Services in Louisville &amp; Beyond</h2>
+          <p class="section__desc">Residential and commercial drywall contractors serving Louisville, Kentucky, and communities throughout Southern Indiana.</p>
         </div>
         <div class="services__grid">
           <article class="service-card">
             <div class="service-card__icon" aria-hidden="true">🏗️</div>
-            <h3 class="service-card__title">Installation</h3>
-            <p class="service-card__text">New drywall hung, taped, and finished for renovations and new builds.</p>
+            <h3 class="service-card__title">Drywall Installation</h3>
+            <p class="service-card__text">New drywall hung, taped, and finished for Louisville-area renovations and new construction builds.</p>
           </article>
           <article class="service-card">
             <div class="service-card__icon" aria-hidden="true">🔧</div>
-            <h3 class="service-card__title">Repair</h3>
-            <p class="service-card__text">Holes, cracks, water damage, and texture matching handled with care.</p>
+            <h3 class="service-card__title">Drywall Repair</h3>
+            <p class="service-card__text">Hole patching, crack repair, water damage, and texture matching across KY and Southern IN.</p>
           </article>
           <article class="service-card">
             <div class="service-card__icon" aria-hidden="true">✨</div>
-            <h3 class="service-card__title">Finishing</h3>
-            <p class="service-card__text">Smooth Level 4 &amp; 5 finishes, skim coating, and paint-ready surfaces.</p>
+            <h3 class="service-card__title">Drywall Finishing</h3>
+            <p class="service-card__text">Smooth Level 4 &amp; 5 finishes, skim coating, and paint-ready surfaces for any room.</p>
           </article>
           <article class="service-card">
             <div class="service-card__icon" aria-hidden="true">🏢</div>
-            <h3 class="service-card__title">Commercial</h3>
-            <p class="service-card__text">Reliable drywall crews for offices, retail, and multi-unit projects.</p>
+            <h3 class="service-card__title">Commercial Drywall</h3>
+            <p class="service-card__text">Reliable drywall crews for Louisville offices, retail spaces, and multi-unit projects.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="about section section--alt" id="about">
+    <section class="areas section section--alt" id="areas">
+      <div class="container">
+        <div class="section__header">
+          <p class="section__eyebrow">Where We Work</p>
+          <h2 class="section__title">Serving Louisville, Kentucky &amp; Southern Indiana</h2>
+          <p class="section__desc">
+            Pro Drywall is your local drywall contractor in Louisville, KY. We travel throughout
+            the Kentucky–Indiana border region for residential and commercial projects.
+          </p>
+        </div>
+        <div class="areas__grid">
+          <div class="areas__group">
+            <h3 class="areas__heading">Kentucky</h3>
+            <ul class="areas__list">
+              <li>Louisville</li>
+              <li>La Grange</li>
+              <li>Mount Washington</li>
+              <li>Shepherdsville</li>
+              <li>Shelbyville</li>
+              <li>Elizabethtown</li>
+            </ul>
+          </div>
+          <div class="areas__group">
+            <h3 class="areas__heading">Southern Indiana</h3>
+            <ul class="areas__list">
+              <li>Jeffersonville</li>
+              <li>New Albany</li>
+              <li>Clarksville</li>
+              <li>Sellersburg</li>
+              <li>Charlestown</li>
+              <li>Corydon</li>
+            </ul>
+          </div>
+        </div>
+        <p class="areas__note">Don't see your city listed? <a href="#contact">Contact us</a> — we likely serve your area.</p>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
       <div class="container about__grid">
         <div class="about__content">
           <p class="section__eyebrow">About Us</p>
-          <h2 class="section__title">Built on Craftsmanship</h2>
+          <h2 class="section__title">Your Local Louisville Drywall Company</h2>
           <p class="about__text">
             Pro Drywall is a locally owned business based in Louisville, dedicated to clean workmanship
             and honest pricing. We show up on time, protect your space, and leave every job site better than we found it.
@@ -167,6 +285,33 @@
       </div>
     </section>
 
+    <section class="faq section section--alt" id="faq">
+      <div class="container">
+        <div class="section__header">
+          <p class="section__eyebrow">Common Questions</p>
+          <h2 class="section__title">Drywall Contractor FAQ</h2>
+        </div>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary class="faq__question">Do you provide drywall services in Louisville, Kentucky?</summary>
+            <p class="faq__answer">Yes. Pro Drywall is based in Louisville, KY and serves the greater Louisville metro area with drywall installation, repair, and finishing for homes and businesses.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Do you work in Southern Indiana?</summary>
+            <p class="faq__answer">Yes. We serve Southern Indiana including Jeffersonville, New Albany, Clarksville, Sellersburg, and surrounding communities across the Ohio River region.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">What drywall services do you offer?</summary>
+            <p class="faq__answer">We offer drywall installation, drywall repair, Level 4 and Level 5 finishing, skim coating, texture matching, and commercial drywall for residential and business projects.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">How do I get a free drywall estimate?</summary>
+            <p class="faq__answer">Call us at <a href="tel:+15025462608">(502) 546-2608</a>, email <a href="mailto:info@drywall-contractors.org">info@drywall-contractors.org</a>, or fill out the contact form below. We provide free on-site estimates across Kentucky and Southern Indiana.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="cta-banner">
       <div class="container cta-banner__inner">
         <div>
@@ -184,7 +329,7 @@
       <div class="container contact__grid">
         <div class="contact__info">
           <p class="section__eyebrow">Get In Touch</p>
-          <h2 class="section__title">Contact Us</h2>
+          <h2 class="section__title">Contact a Louisville Drywall Contractor</h2>
           <p class="contact__desc">
             Serving Louisville, Kentucky, and Southern Indiana. Fill out the form and we'll get back to you
             as soon as possible, or reach us directly below.
@@ -248,10 +393,13 @@
         <span class="logo__text">Pro Drywall</span>
       </div>
       <p class="footer__copy">&copy; <span id="year"></span> Pro Drywall. Louisville, KY · Serving Kentucky &amp; Southern Indiana.</p>
-      <div class="footer__links">
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href="#services">Services</a>
+        <a href="#areas">Service Area</a>
+        <a href="#faq">FAQ</a>
         <a href="#" id="footerPhoneLink">Call</a>
         <a href="#" id="footerEmailLink">Email</a>
-      </div>
+      </nav>
     </div>
   </footer>
 

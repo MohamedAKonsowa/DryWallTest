@@ -5,6 +5,11 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: npm start
+    domains:
+      - louisvilledrywallpaints.com
+      - www.louisvilledrywallpaints.com
+      - drywall-contractors.org
+      - www.drywall-contractors.org
     envVars:
       - key: NODE_VERSION
         value: 20
@@ -12,6 +17,10 @@ services:
         value: info@drywall-contractors.org
       - key: SITE_URL
         value: https://louisvilledrywallpaints.com
+      - key: PRIMARY_DOMAIN
+        value: louisvilledrywallpaints.com
+      - key: SECONDARY_DOMAIN
+        value: drywall-contractors.org
       - key: CONTACT_PHONE
         value: "+1 5025462608"
       - key: WEB3FORMS_ACCESS_KEY

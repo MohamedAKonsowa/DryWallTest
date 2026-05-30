@@ -7,10 +7,43 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const SITE_URL = process.env.SITE_URL || 'https://louisvilledrywallpaints.com';
+const PRIMARY_DOMAIN = process.env.PRIMARY_DOMAIN || 'louisvilledrywallpaints.com';
+const SECONDARY_DOMAIN = process.env.SECONDARY_DOMAIN || 'drywall-contractors.org';
+const SITE_DOMAINS = [PRIMARY_DOMAIN, SECONDARY_DOMAIN].filter(
+  (domain, index, list) => domain && list.indexOf(domain) === index
+);
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'info@drywall-contractors.org';
 const CONTACT_PHONE = process.env.CONTACT_PHONE || '+1 5025462608';
 
 app.use(express.json());
+
+app.get('/robots.txt', (_req, res) => {
+  const sitemapLines = SITE_DOMAINS.map((domain) => `Sitemap: https://${domain}/sitemap.xml`).join('\n');
+  res.type('text/plain').send(`User-agent: *
+Allow: /
+
+${sitemapLines}
+`);
+});
+
+app.get('/sitemap.xml', (_req, res) => {
+  const lastmod = new Date().toISOString().split('T')[0];
+  const urls = SITE_DOMAINS.map(
+    (domain) => `  <url>
+    <loc>https://${domain}/</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>${lastmod}</lastmod>
+    <priority>1.0</priority>
+  </url>`
+  ).join('\n');
+
+  res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`);
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 const SMTP_TIMEOUT_MS = 15000;

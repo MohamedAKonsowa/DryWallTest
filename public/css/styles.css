@@ -467,6 +467,101 @@ a {
   font-size: 0.9375rem;
 }
 
+.service-card__price {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Pricing */
+.pricing__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+}
+
+.pricing-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  text-align: center;
+}
+
+.pricing-card--featured {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow);
+}
+
+.pricing-card__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.pricing-card__amount {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 3.25rem);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.pricing-card__currency {
+  font-size: 0.55em;
+  vertical-align: super;
+}
+
+.pricing-card__unit {
+  font-family: var(--font-body);
+  font-size: 0.35em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.pricing-card__text {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.pricing__note {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem;
+  background: var(--color-primary-light);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.pricing__note-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pricing__note p {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.pricing__note a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* Gallery */
 .gallery__grid {
   display: grid;
@@ -926,6 +1021,11 @@ a {
 
 /* Tablet+ */
 @media (min-width: 640px) {
+  .pricing__grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: none;
+  }
+
   .gallery__grid {
     grid-template-columns: repeat(2, 1fr);
   }

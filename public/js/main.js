@@ -1,6 +1,6 @@
 (function () {
   const FALLBACK = {
-    email: 'info@drywall-contractors.org',
+    email: 'quotes@louisvilledrywallpaints.org',
     phone: '+1 5025462608',
     phoneLink: '+15025462608',
   };

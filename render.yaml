@@ -14,7 +14,7 @@ services:
       - key: NODE_VERSION
         value: 20
       - key: CONTACT_EMAIL
-        value: info@drywall-contractors.org
+        value: quotes@louisvilledrywallpaints.org
       - key: SITE_URL
         value: https://louisvilledrywallpaints.com
       - key: PRIMARY_DOMAIN

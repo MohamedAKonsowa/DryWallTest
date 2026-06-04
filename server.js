@@ -12,7 +12,7 @@ const SECONDARY_DOMAIN = process.env.SECONDARY_DOMAIN || 'drywall-contractors.or
 const SITE_DOMAINS = [PRIMARY_DOMAIN, SECONDARY_DOMAIN].filter(
   (domain, index, list) => domain && list.indexOf(domain) === index
 );
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'info@drywall-contractors.org';
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'quotes@louisvilledrywallpaints.org';
 const CONTACT_PHONE = process.env.CONTACT_PHONE || '+1 5025462608';
 
 app.use(express.json());

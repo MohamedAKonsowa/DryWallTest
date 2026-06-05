@@ -14,29 +14,42 @@
   const formStatus = document.getElementById('formStatus');
   const submitBtn = document.getElementById('submitBtn');
   const yearEl = document.getElementById('year');
+  const preferredDateInput = document.getElementById('preferredDate');
+  const stickyCta = document.getElementById('stickyCta');
+  const scheduleSection = document.getElementById('schedule');
 
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
 
+  if (preferredDateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    preferredDateInput.min = today;
+  }
+
   function setPhoneLinks(phone, phoneLink) {
     const tel = `tel:${phoneLink || phone.replace(/\s/g, '')}`;
     const ids = [
-      'headerCallBtn',
       'heroCallBtn',
-      'ctaCallBtn',
+      'stepsCallLink',
       'contactPhoneLink',
       'footerPhoneLink',
+      'stickyCallBtn',
     ];
 
     ids.forEach((id) => {
       const el = document.getElementById(id);
-      if (el) {
-        el.href = tel;
-        if (id === 'contactPhoneLink') return;
-        el.textContent = id === 'headerCallBtn' || id === 'heroCallBtn' || id === 'ctaCallBtn'
-          ? (id === 'headerCallBtn' ? 'Call Now' : id === 'heroCallBtn' ? 'Call Us' : 'Call Now')
-          : 'Call';
+      if (!el) return;
+      el.href = tel;
+      if (id === 'contactPhoneLink') return;
+      if (id === 'heroCallBtn') {
+        el.textContent = `Call ${formatPhoneDisplay(phone)}`;
+      } else if (id === 'stepsCallLink') {
+        el.textContent = `Call ${formatPhoneDisplay(phone)}`;
+      } else if (id === 'stickyCallBtn') {
+        el.textContent = 'Call';
+      } else {
+        el.textContent = 'Call';
       }
     });
 
@@ -44,9 +57,20 @@
     if (phoneDisplay) phoneDisplay.textContent = phone;
   }
 
+  function formatPhoneDisplay(phone) {
+    const digits = phone.replace(/\D/g, '');
+    if (digits.length === 11 && digits.startsWith('1')) {
+      return `(${digits.slice(1, 4)}) ${digits.slice(4, 7)}-${digits.slice(7)}`;
+    }
+    if (digits.length === 10) {
+      return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+    }
+    return phone;
+  }
+
   function setEmailLinks(email) {
     const mailto = `mailto:${email}`;
-    const ids = ['ctaEmailBtn', 'contactEmailLink', 'footerEmailLink'];
+    const ids = ['contactEmailLink'];
 
     ids.forEach((id) => {
       const el = document.getElementById(id);
@@ -55,6 +79,21 @@
 
     const emailDisplay = document.getElementById('contactEmail');
     if (emailDisplay) emailDisplay.textContent = email;
+  }
+
+  function buildScheduleMessage(fields) {
+    const lines = [
+      `SERVICE: ${fields.service}`,
+      `LOCATION: ${fields.location}`,
+      `PREFERRED VISIT DATE: ${fields.preferredDate || 'Flexible'}`,
+      `BEST TIME TO REACH: ${fields.preferredTime}`,
+    ];
+
+    if (fields.message) {
+      lines.push('', 'PROJECT DETAILS:', fields.message);
+    }
+
+    return lines.join('\n');
   }
 
   async function loadConfig() {
@@ -77,17 +116,21 @@
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
         access_key: accessKey,
-        subject: `New Drywall Inquiry from ${payload.name}`,
+        subject: `Estimate Request: ${payload.service} — ${payload.location}`,
         name: payload.name,
         email: payload.email,
-        phone: payload.phone || '',
+        phone: payload.phone,
         message: payload.message,
+        service: payload.service,
+        location: payload.location,
+        preferred_date: payload.preferredDate || 'Flexible',
+        preferred_time: payload.preferredTime,
       }),
     });
 
     const data = await res.json();
     if (!data.success) {
-      throw new Error(data.message || 'Unable to send message.');
+      throw new Error(data.message || 'Unable to send request.');
     }
 
     return data;
@@ -115,6 +158,36 @@
     navToggle.setAttribute('aria-label', 'Open menu');
   }
 
+  function initStickyCta() {
+    if (!stickyCta || !scheduleSection) return;
+
+    const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+
+    const updateSticky = (visible) => {
+      if (!isMobile()) {
+        stickyCta.classList.remove('is-visible');
+        document.body.classList.remove('has-sticky-cta');
+        return;
+      }
+      stickyCta.classList.toggle('is-visible', visible);
+      document.body.classList.toggle('has-sticky-cta', visible);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => updateSticky(!entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+
+    observer.observe(scheduleSection);
+    window.addEventListener('resize', () => {
+      if (!isMobile()) updateSticky(false);
+    });
+
+    if (isMobile() && window.scrollY < scheduleSection.offsetTop - 100) {
+      updateSticky(true);
+    }
+  }
+
   navToggle.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', String(isOpen));
@@ -136,18 +209,33 @@
     formStatus.className = 'form-status';
 
     const formData = new FormData(contactForm);
-    const payload = {
+    const fields = {
+      service: formData.get('service')?.toString().trim(),
+      location: formData.get('location')?.toString().trim(),
       name: formData.get('name')?.toString().trim(),
-      email: formData.get('email')?.toString().trim(),
       phone: formData.get('phone')?.toString().trim(),
-      message: formData.get('message')?.toString().trim(),
+      email: formData.get('email')?.toString().trim(),
+      preferredDate: formData.get('preferredDate')?.toString().trim(),
+      preferredTime: formData.get('preferredTime')?.toString().trim() || 'Anytime',
+      details: formData.get('message')?.toString().trim(),
     };
 
-    if (!payload.name || !payload.email || !payload.message) {
+    if (!fields.service || !fields.location || !fields.name || !fields.phone || !fields.email) {
       formStatus.textContent = 'Please fill in all required fields.';
       formStatus.className = 'form-status error';
       return;
     }
+
+    const payload = {
+      name: fields.name,
+      email: fields.email,
+      phone: fields.phone,
+      service: fields.service,
+      location: fields.location,
+      preferredDate: fields.preferredDate,
+      preferredTime: fields.preferredTime,
+      message: buildScheduleMessage({ ...fields, message: fields.details }),
+    };
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
@@ -160,15 +248,24 @@
 
       if (config.web3formsKey) {
         data = await submitViaWeb3Forms(payload, config.web3formsKey);
-        data = { success: true, message: data.message || 'Thank you! Your message has been sent.' };
+        data = {
+          success: true,
+          message: 'Request received! We\'ll contact you within 1 business day to confirm your visit.',
+        };
       } else {
         data = await submitViaServer(payload, controller.signal);
+        if (data.success) {
+          data.message = 'Request received! We\'ll contact you within 1 business day to confirm your visit.';
+        }
       }
 
       if (data.success) {
         formStatus.textContent = data.message;
         formStatus.className = 'form-status success';
         contactForm.reset();
+        if (preferredDateInput) {
+          preferredDateInput.min = new Date().toISOString().split('T')[0];
+        }
       } else {
         formStatus.textContent = data.error || 'Something went wrong. Please try again.';
         formStatus.className = 'form-status error';
@@ -182,9 +279,15 @@
     } finally {
       clearTimeout(timeoutId);
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
+      submitBtn.textContent = 'Request Free Estimate';
     }
   });
 
+  if (window.location.hash === '#contact') {
+    history.replaceState(null, '', '#schedule');
+    document.getElementById('schedule')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   loadConfig();
+  initStickyCta();
 })();

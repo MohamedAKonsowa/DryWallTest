@@ -102,12 +102,21 @@ app.get('/api/config', (_req, res) => {
 });
 
 app.post('/api/contact', async (req, res) => {
-  const { name, email, phone, message } = req.body;
+  const {
+    name,
+    email,
+    phone,
+    message,
+    service,
+    location,
+    preferredDate,
+    preferredTime,
+  } = req.body;
 
-  if (!name?.trim() || !email?.trim() || !message?.trim()) {
+  if (!name?.trim() || !email?.trim() || !phone?.trim() || !service?.trim() || !location?.trim()) {
     return res.status(400).json({
       success: false,
-      error: 'Please fill in your name, email, and message.',
+      error: 'Please fill in all required fields.',
     });
   }
 
@@ -119,28 +128,38 @@ app.post('/api/contact', async (req, res) => {
     });
   }
 
+  const bodyText = message?.trim() || 'No additional details provided.';
+  const visitDate = preferredDate?.trim() || 'Flexible';
+  const reachTime = preferredTime?.trim() || 'Anytime';
+
   const mailOptions = {
     from: process.env.SMTP_USER || CONTACT_EMAIL,
     to: CONTACT_EMAIL,
     replyTo: email.trim(),
-    subject: `New Drywall Inquiry from ${name.trim()}`,
+    subject: `Estimate Request: ${service.trim()} — ${location.trim()}`,
     text: [
       `Name: ${name.trim()}`,
       `Email: ${email.trim()}`,
-      phone?.trim() ? `Phone: ${phone.trim()}` : null,
+      `Phone: ${phone.trim()}`,
+      `Service: ${service.trim()}`,
+      `Location: ${location.trim()}`,
+      `Preferred visit date: ${visitDate}`,
+      `Best time to reach: ${reachTime}`,
       '',
-      'Message:',
-      message.trim(),
-    ]
-      .filter(Boolean)
-      .join('\n'),
+      'Details:',
+      bodyText,
+    ].join('\n'),
     html: `
-      <h2>New Contact Form Submission</h2>
+      <h2>New Estimate Request</h2>
       <p><strong>Name:</strong> ${escapeHtml(name.trim())}</p>
       <p><strong>Email:</strong> ${escapeHtml(email.trim())}</p>
-      ${phone?.trim() ? `<p><strong>Phone:</strong> ${escapeHtml(phone.trim())}</p>` : ''}
-      <p><strong>Message:</strong></p>
-      <p>${escapeHtml(message.trim()).replace(/\n/g, '<br>')}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(phone.trim())}</p>
+      <p><strong>Service:</strong> ${escapeHtml(service.trim())}</p>
+      <p><strong>Location:</strong> ${escapeHtml(location.trim())}</p>
+      <p><strong>Preferred visit date:</strong> ${escapeHtml(visitDate)}</p>
+      <p><strong>Best time to reach:</strong> ${escapeHtml(reachTime)}</p>
+      <p><strong>Details:</strong></p>
+      <p>${escapeHtml(bodyText).replace(/\n/g, '<br>')}</p>
     `,
   };
 

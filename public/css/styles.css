@@ -203,13 +203,26 @@ a {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.625rem;
   font-weight: 700;
   font-size: 0.8125rem;
   line-height: 1.25;
   letter-spacing: 0.02em;
-  max-width: 10.5rem;
+  max-width: 14rem;
   text-transform: uppercase;
+}
+
+.logo__img {
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo__img--footer {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .logo__llc {
@@ -219,8 +232,13 @@ a {
 
 @media (min-width: 480px) {
   .logo {
-    max-width: 12rem;
+    max-width: 15rem;
     font-size: 0.875rem;
+  }
+
+  .logo__img {
+    width: 3rem;
+    height: 3rem;
   }
 }
 
@@ -229,11 +247,6 @@ a {
     max-width: none;
     font-size: 0.9375rem;
   }
-}
-
-.logo__icon {
-  color: var(--color-primary);
-  font-size: 1.25rem;
 }
 
 .nav-toggle {
@@ -1136,9 +1149,12 @@ a {
 .footer__brand {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.625rem;
   color: #fff;
   font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  line-height: 1.25;
 }
 
 .footer__copy {

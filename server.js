@@ -4,6 +4,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 
 const app = express();
+app.disable('x-powered-by');
 const PORT = process.env.PORT || 3000;
 
 const SITE_URL = process.env.SITE_URL || 'https://louisvilledrywallpaints.com';

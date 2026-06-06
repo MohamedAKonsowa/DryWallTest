@@ -47,7 +47,9 @@
       } else if (id === 'stepsCallLink') {
         el.textContent = `Call ${formatPhoneDisplay(phone)}`;
       } else if (id === 'stickyCallBtn') {
-        el.textContent = 'Call';
+        el.textContent = 'Call Now';
+      } else if (id === 'footerPhoneLink') {
+        el.textContent = 'Call Us Today';
       } else {
         el.textContent = 'Call';
       }

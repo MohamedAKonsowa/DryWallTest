@@ -40,6 +40,13 @@
         "sameAs": [
           "https://www.facebook.com/profile.php?id=61590733854853"
         ],
+        "knowsAbout": [
+          "Drywall installation",
+          "Drywall repair",
+          "Drywall finishing",
+          "Interior painting",
+          "Home renovation"
+        ],
         "description": "Louisville Drywall &amp; Painting LLC provides drywall installation, repair, finishing, and interior painting for rural homes across Kentucky and Southern Indiana.",
         "image": "https://louisvilledrywallpaints.com/images/work-vaulted.png",
         "address": {
@@ -164,11 +171,11 @@
         <span></span>
       </button>
       <nav class="nav" id="nav">
-        <a href="#services" class="nav__link">Services</a>
+        <a href="/services" class="nav__link">Services</a>
         <a href="#affordable" class="nav__link">Affordable</a>
         <a href="#gallery" class="nav__link">Our Work</a>
         <a href="#areas" class="nav__link">Service Area</a>
-        <a href="#about" class="nav__link">About</a>
+        <a href="#reviews" class="nav__link">Reviews</a>
         <a href="#faq" class="nav__link">FAQ</a>
         <a href="#schedule" class="nav__link nav__link--highlight">Schedule</a>
         <a href="#schedule" class="btn btn--primary nav__cta" id="headerScheduleBtn">Book Estimate</a>
@@ -235,42 +242,54 @@
         </div>
         <div class="services__grid">
           <article class="service-card">
-            <div class="service-card__image">
-              <img src="/images/work-vaulted.png" alt="Drywall installation on a vaulted ceiling and sloped walls in a Kentucky home remodel" loading="lazy" width="1024" height="682">
-            </div>
-            <div class="service-card__body">
-              <h3 class="service-card__title">Drywall Installation</h3>
-              <p class="service-card__tag">Affordable labor</p>
-              <p class="service-card__text">New drywall hung, taped, and finished for bedroom remodels, basements, and additions. You supply the materials.</p>
-            </div>
+            <a href="/drywall-installation" class="service-card__link">
+              <div class="service-card__image">
+                <img src="/images/work-vaulted.png" alt="Drywall installation on a vaulted ceiling and sloped walls in a Kentucky home remodel" loading="lazy" width="1024" height="682">
+              </div>
+              <div class="service-card__body">
+                <h3 class="service-card__title">Drywall Installation</h3>
+                <p class="service-card__tag">Affordable labor</p>
+                <p class="service-card__text">New drywall hung, taped, and finished for bedroom remodels, basements, and additions. You supply the materials.</p>
+                <span class="service-card__more">Learn more →</span>
+              </div>
+            </a>
           </article>
           <article class="service-card">
-            <div class="service-card__image">
-              <img src="/images/work-beam.png" alt="Drywall repair and finishing around an exposed wood beam during an interior room remodel" loading="lazy" width="768" height="1024">
-            </div>
-            <div class="service-card__body">
-              <h3 class="service-card__title">Drywall Repair</h3>
-              <p class="service-card__text">Hole patching, crack repair, and water damage fixes for walls and ceilings in your home.</p>
-            </div>
+            <a href="/drywall-repair" class="service-card__link">
+              <div class="service-card__image">
+                <img src="/images/work-beam.png" alt="Drywall repair and finishing around an exposed wood beam during an interior room remodel" loading="lazy" width="768" height="1024">
+              </div>
+              <div class="service-card__body">
+                <h3 class="service-card__title">Drywall Repair</h3>
+                <p class="service-card__text">Hole patching, crack repair, and water damage fixes for walls and ceilings in your home.</p>
+                <span class="service-card__more">Learn more →</span>
+              </div>
+            </a>
           </article>
           <article class="service-card">
-            <div class="service-card__image">
-              <img src="/images/work-garage.png" alt="Garage drywall finishing with joint compound applied to walls and ceiling seams" loading="lazy" width="1000" height="1000">
-            </div>
-            <div class="service-card__body">
-              <h3 class="service-card__title">Drywall Finishing</h3>
-              <p class="service-card__text">Smooth, paint-ready walls and ceilings for farmhouses and rural homes.</p>
-            </div>
+            <a href="/drywall-finishing" class="service-card__link">
+              <div class="service-card__image">
+                <img src="/images/work-garage.png" alt="Garage drywall finishing with joint compound applied to walls and ceiling seams" loading="lazy" width="1000" height="1000">
+              </div>
+              <div class="service-card__body">
+                <h3 class="service-card__title">Drywall Finishing</h3>
+                <p class="service-card__text">Smooth, paint-ready walls and ceilings for farmhouses and rural homes.</p>
+                <span class="service-card__more">Learn more →</span>
+              </div>
+            </a>
           </article>
           <article class="service-card">
-            <div class="service-card__image">
-              <img src="/images/basement.jpg" alt="Freshly painted interior walls ready for a rural Kentucky home painting project" loading="lazy" width="600" height="400">
-            </div>
-            <div class="service-card__body">
-              <h3 class="service-card__title">Interior Painting</h3>
-              <p class="service-card__tag">Affordable labor</p>
-              <p class="service-card__text">Room painting, basement finishes, and touch-ups. You buy the paint — we handle the labor.</p>
-            </div>
+            <a href="/interior-painting" class="service-card__link">
+              <div class="service-card__image">
+                <img src="/images/basement.jpg" alt="Freshly painted interior walls ready for a rural Kentucky home painting project" loading="lazy" width="600" height="400">
+              </div>
+              <div class="service-card__body">
+                <h3 class="service-card__title">Interior Painting</h3>
+                <p class="service-card__tag">Affordable labor</p>
+                <p class="service-card__text">Room painting, basement finishes, and touch-ups. You buy the paint — we handle the labor.</p>
+                <span class="service-card__more">Learn more →</span>
+              </div>
+            </a>
           </article>
         </div>
       </div>
@@ -338,9 +357,9 @@
           <div class="areas__group">
             <h3 class="areas__heading">Rural Kentucky</h3>
             <ul class="areas__list">
-              <li>Shelbyville</li>
-              <li>La Grange</li>
-              <li>Bardstown</li>
+              <li><a href="/drywall-contractor-shelbyville-ky">Shelbyville, KY</a></li>
+              <li><a href="/drywall-contractor-la-grange-ky">La Grange, KY</a></li>
+              <li><a href="/drywall-contractor-bardstown-ky">Bardstown, KY</a></li>
               <li>Lebanon</li>
               <li>Springfield</li>
               <li>Shepherdsville</li>
@@ -349,9 +368,9 @@
           <div class="areas__group">
             <h3 class="areas__heading">Rural Southern Indiana</h3>
             <ul class="areas__list">
-              <li>Corydon</li>
-              <li>Madison</li>
-              <li>Salem</li>
+              <li><a href="/drywall-contractor-corydon-in">Corydon, IN</a></li>
+              <li><a href="/drywall-contractor-madison-in">Madison, IN</a></li>
+              <li><a href="/drywall-contractor-salem-in">Salem, IN</a></li>
               <li>Scottsburg</li>
               <li>Paoli</li>
               <li>North Vernon</li>
@@ -392,6 +411,34 @@
             <p class="about__card-text">Reach out today for a fast, no-obligation quote.</p>
             <a href="#schedule" class="btn btn--primary">Book Your Visit</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews section section--alt" id="reviews">
+      <div class="container">
+        <div class="section__header">
+          <p class="section__eyebrow">Trusted Local Crew</p>
+          <h2 class="section__title">Why Homeowners Choose Us</h2>
+          <p class="section__desc">We're a small team — not a franchise. Rural homeowners across Kentucky and Southern Indiana call us for affordable drywall and painting with honest quotes.</p>
+        </div>
+        <div class="reviews__grid">
+          <article class="review-card">
+            <h3 class="review-card__title">Affordable small-team rates</h3>
+            <p class="review-card__text">Low overhead means fair labor pricing without the markup of a big contractor.</p>
+          </article>
+          <article class="review-card">
+            <h3 class="review-card__title">Free on-site estimates</h3>
+            <p class="review-card__text">We come to your home, measure the job, and give you a clear quote before any work starts.</p>
+          </article>
+          <article class="review-card">
+            <h3 class="review-card__title">Rural areas welcome</h3>
+            <p class="review-card__text">We travel to country homes and small towns across Kentucky and Southern Indiana.</p>
+          </article>
+        </div>
+        <div class="reviews__cta">
+          <p>Worked with us? Leave a review on Facebook or Google — it helps other rural homeowners find affordable drywall and painting.</p>
+          <a href="https://www.facebook.com/profile.php?id=61590733854853" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Review on Facebook</a>
         </div>
       </div>
     </section>
@@ -601,22 +648,45 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer__inner">
+    <div class="container footer__extended">
       <div class="footer__brand">
         <img src="/images/logo.png" alt="Louisville Drywall &amp; Painting LLC logo" class="logo__img logo__img--footer" width="40" height="40">
         <span class="logo__text">Louisville Drywall<br><span class="logo__llc">&amp; Painting LLC</span></span>
       </div>
+      <div class="footer__columns">
+        <div class="footer__col">
+          <h3 class="footer__col-title">Services</h3>
+          <nav class="footer__col-links">
+            <a href="/services">All Services</a>
+            <a href="/drywall-installation">Drywall Installation</a>
+            <a href="/drywall-repair">Drywall Repair</a>
+            <a href="/drywall-finishing">Drywall Finishing</a>
+            <a href="/interior-painting">Interior Painting</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-title">Service Areas</h3>
+          <nav class="footer__col-links">
+            <a href="/drywall-contractor-shelbyville-ky">Shelbyville, KY</a>
+            <a href="/drywall-contractor-la-grange-ky">La Grange, KY</a>
+            <a href="/drywall-contractor-bardstown-ky">Bardstown, KY</a>
+            <a href="/drywall-contractor-corydon-in">Corydon, IN</a>
+            <a href="/drywall-contractor-madison-in">Madison, IN</a>
+            <a href="/drywall-contractor-salem-in">Salem, IN</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-title">Contact</h3>
+          <nav class="footer__col-links">
+            <a href="#schedule">Book a Visit</a>
+            <a href="#faq">Common Questions</a>
+            <a href="#" id="footerPhoneLink">Call Us Today</a>
+            <a href="mailto:quotes@louisvilledrywallpaints.org">Email Us</a>
+            <a href="https://www.facebook.com/profile.php?id=61590733854853" target="_blank" rel="noopener noreferrer">Facebook</a>
+          </nav>
+        </div>
+      </div>
       <p class="footer__copy">&copy; <span id="year"></span> Louisville Drywall &amp; Painting LLC. Rural Kentucky &amp; Southern Indiana.</p>
-      <nav class="footer__links" aria-label="Footer navigation">
-        <a href="#services">Drywall Services</a>
-        <a href="#affordable">Fair Pricing</a>
-        <a href="#gallery">Project Gallery</a>
-        <a href="#areas">Where We Work</a>
-        <a href="#faq">Common Questions</a>
-        <a href="#schedule">Book a Visit</a>
-        <a href="#" id="footerPhoneLink">Call Us Today</a>
-        <a href="https://www.facebook.com/profile.php?id=61590733854853" target="_blank" rel="noopener noreferrer">Follow on Facebook</a>
-      </nav>
     </div>
   </footer>
 

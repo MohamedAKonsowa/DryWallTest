@@ -155,15 +155,31 @@
   }
 
   function closeNav() {
+    if (!nav || !navToggle) return;
     nav.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Open menu');
   }
 
   function initStickyCta() {
-    if (!stickyCta || !scheduleSection) return;
+    if (!stickyCta) return;
 
     const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+
+    if (!scheduleSection) {
+      const showSticky = () => {
+        if (!isMobile()) {
+          stickyCta.classList.remove('is-visible');
+          document.body.classList.remove('has-sticky-cta');
+          return;
+        }
+        stickyCta.classList.add('is-visible');
+        document.body.classList.add('has-sticky-cta');
+      };
+      showSticky();
+      window.addEventListener('resize', showSticky);
+      return;
+    }
 
     const updateSticky = (visible) => {
       if (!isMobile()) {
@@ -190,21 +206,55 @@
     }
   }
 
-  navToggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-  });
+  function prefillFormFromUrl() {
+    if (!contactForm) return;
 
-  nav.querySelectorAll('.nav__link, .nav__cta').forEach((link) => {
-    link.addEventListener('click', closeNav);
-  });
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get('service');
+    const location = params.get('location');
 
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 20);
-  });
+    if (service) {
+      const select = document.getElementById('service');
+      if (select) {
+        for (const option of select.options) {
+          if (option.value === service) {
+            select.value = service;
+            break;
+          }
+        }
+      }
+    }
 
-  contactForm.addEventListener('submit', async (e) => {
+    if (location) {
+      const locationInput = document.getElementById('location');
+      if (locationInput) locationInput.value = location;
+    }
+
+    if (window.location.hash === '#schedule') {
+      document.getElementById('schedule')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  if (navToggle && nav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+
+    nav.querySelectorAll('.nav__link, .nav__cta').forEach((link) => {
+      link.addEventListener('click', closeNav);
+    });
+  }
+
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  }
+
+  if (contactForm && formStatus && submitBtn) {
+    contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     formStatus.textContent = '';
@@ -283,7 +333,8 @@
       submitBtn.disabled = false;
       submitBtn.textContent = 'Request Free Estimate';
     }
-  });
+    });
+  }
 
   if (window.location.hash === '#contact') {
     history.replaceState(null, '', '#schedule');
@@ -291,5 +342,6 @@
   }
 
   loadConfig();
+  prefillFormFromUrl();
   initStickyCta();
 })();

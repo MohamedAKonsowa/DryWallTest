@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const { SERVICES, LOCATIONS, getSitemapPaths } = require('./site-data');
+const { renderServicePage, renderLocationPage, renderServicesHub } = require('./render');
 
 const app = express();
 app.disable('x-powered-by');
@@ -29,13 +31,18 @@ ${sitemapLines}
 
 app.get('/sitemap.xml', (_req, res) => {
   const lastmod = new Date().toISOString().split('T')[0];
-  const urls = SITE_DOMAINS.map(
-    (domain) => `  <url>
-    <loc>https://${domain}/</loc>
+  const paths = getSitemapPaths();
+  const urls = SITE_DOMAINS.flatMap((domain) =>
+    paths.map((pagePath) => {
+      const loc = pagePath === '/' ? `https://${domain}/` : `https://${domain}${pagePath}`;
+      const priority = pagePath === '/' ? '1.0' : pagePath === '/services' ? '0.9' : '0.8';
+      return `  <url>
+    <loc>${loc}</loc>
     <changefreq>weekly</changefreq>
     <lastmod>${lastmod}</lastmod>
-    <priority>1.0</priority>
-  </url>`
+    <priority>${priority}</priority>
+  </url>`;
+    })
   ).join('\n');
 
   res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
@@ -43,6 +50,22 @@ app.get('/sitemap.xml', (_req, res) => {
 ${urls}
 </urlset>
 `);
+});
+
+app.get('/services', (_req, res) => {
+  res.type('html').send(renderServicesHub());
+});
+
+SERVICES.forEach((service) => {
+  app.get(service.path, (_req, res) => {
+    res.type('html').send(renderServicePage(service));
+  });
+});
+
+LOCATIONS.forEach((location) => {
+  app.get(location.path, (_req, res) => {
+    res.type('html').send(renderLocationPage(location));
+  });
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -197,8 +220,17 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get('*', (req, res) => {
+  if (req.path === '/' || req.path === '/index.html') {
+    return res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  }
+  res.status(404).type('html').send(`<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Page Not Found</title>
+<link rel="stylesheet" href="/css/styles.css"></head>
+<body style="font-family:sans-serif;text-align:center;padding:4rem">
+<h1>Page not found</h1>
+<p><a href="/">Return home</a> · <a href="/services">View services</a></p>
+</body></html>`);
 });
 
 app.listen(PORT, () => {

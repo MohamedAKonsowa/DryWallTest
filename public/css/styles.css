@@ -447,6 +447,51 @@ a {
   gap: 1.5rem;
 }
 
+.services__areas {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.services__areas-title {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.services__areas-note {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  margin-top: 1.5rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services__areas-note a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.service-areas__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.service-areas__intro {
+  text-align: center;
+  color: var(--color-text-muted);
+  max-width: 640px;
+  margin: 0 auto 2rem;
+  font-size: 1.0625rem;
+}
+
 .service-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);

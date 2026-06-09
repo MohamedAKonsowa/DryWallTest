@@ -161,6 +161,32 @@ function pageShell({ title, description, canonical, schema, body }) {
 </html>`;
 }
 
+function serviceAreasBlock() {
+  return `<section class="service-areas section section--alt">
+      <div class="container">
+        <h2 class="service-areas__title">Louisville &amp; surrounding areas we serve</h2>
+        <p class="service-areas__intro">Based in Louisville, we provide drywall and painting services throughout the metro area and beyond. Not sure if we cover your town? Contact us and we'll confirm before scheduling.</p>
+        <div class="areas__summary">
+          <div class="areas__group areas__group--wide">
+            <h3 class="areas__heading">Louisville metro &amp; nearby</h3>
+            <p class="areas__text">Louisville and surrounding communities throughout the greater metro area — homes, basements, garages, and remodels we can reach by road.</p>
+          </div>
+          <div class="areas__group areas__group--wide">
+            <h3 class="areas__heading">Kentucky &amp; Southern Indiana</h3>
+            <p class="areas__text">We also travel to rural towns and country homes across Kentucky and Southern Indiana for drywall installation, repair, finishing, and painting.</p>
+          </div>
+        </div>
+        <div class="areas__cta">
+          <p class="areas__note"><strong>Not sure if we serve your area?</strong> Call, email, or use the contact form with your town — we'll let you know if we can come out to you.</p>
+          <div class="areas__cta-actions">
+            <a href="${scheduleLink()}" class="btn btn--primary">Ask About Your Area</a>
+            <a href="tel:+15025462608" class="btn btn--outline-primary">Call ${BUSINESS.phoneDisplay}</a>
+          </div>
+        </div>
+      </div>
+    </section>`;
+}
+
 function scheduleLink(serviceName, locationHint) {
   const params = new URLSearchParams();
   if (serviceName) params.set('service', serviceName);
@@ -235,7 +261,7 @@ function renderServicePage(service) {
           { href: '/services', label: 'Services' },
           { label: service.name },
         ])}</ol>
-        <h1 class="page-hero__title">${escapeHtml(service.name)} in Rural Kentucky &amp; Southern Indiana</h1>
+        <h1 class="page-hero__title">${escapeHtml(service.name)} in Louisville &amp; Surrounding Areas</h1>
         <p class="page-hero__desc">${escapeHtml(service.intro)}</p>
       </div>
     </section>
@@ -246,9 +272,9 @@ function renderServicePage(service) {
           <ul class="page-list">${service.details.map((d) => `<li>${escapeHtml(d)}</li>`).join('')}</ul>
           <h2>Why choose our small crew?</h2>
           <p>We're not a big contractor with layers of markup. Louisville Drywall &amp; Painting LLC is a local crew that shows up when we say we will, keeps rates affordable, and treats your rural home with respect. You buy your own materials — we charge fair labor-only pricing.</p>
-          <p>We serve farmhouses, country homes, basements, garages, and room remodels throughout rural Kentucky and Southern Indiana.</p>
-          <h2>Areas we serve</h2>
-          <p class="page-areas">${LOCATIONS.map((l) => `<a href="${l.path}">${escapeHtml(l.city)}, ${l.stateAbbr}</a>`).join(' · ')}</p>
+          <p>We serve Louisville homeowners plus farmhouses, country homes, basements, garages, and room remodels throughout surrounding Kentucky and Southern Indiana.</p>
+          <h2>Not sure if we serve your area?</h2>
+          <p>Contact us with your town or address and we'll confirm whether we can come out before scheduling your free on-site estimate. We cover Louisville and surrounding communities, plus many rural areas across KY and Southern IN.</p>
         </div>
         <aside class="page-content__aside">
           <img src="${service.image}" alt="${escapeHtml(service.imageAlt)}" width="600" height="450" loading="lazy" class="page-content__image">
@@ -260,7 +286,8 @@ function renderServicePage(service) {
         </aside>
       </div>
     </section>
-    <section class="related section section--alt">
+    ${serviceAreasBlock()}
+    <section class="related section">
       <div class="container">
         <h2 class="related__title">Other services</h2>
         <div class="related__grid">${related}</div>
@@ -400,19 +427,20 @@ function renderServicesHub() {
           { href: '/', label: 'Home' },
           { label: 'Services' },
         ])}</ol>
-        <h1 class="page-hero__title">Drywall &amp; Painting Services</h1>
-        <p class="page-hero__desc">Affordable drywall and interior painting for rural Kentucky and Southern Indiana homes. Each service page has details, photos, and a link to schedule your free estimate.</p>
+        <h1 class="page-hero__title">Drywall &amp; Painting Services in Louisville</h1>
+        <p class="page-hero__desc">Louisville Drywall &amp; Painting LLC provides affordable drywall and interior painting throughout Louisville, surrounding communities, and rural areas across Kentucky and Southern Indiana.</p>
       </div>
     </section>
     <section class="section">
       <div class="container service-hub-grid">${cards}</div>
     </section>
+    ${serviceAreasBlock()}
     ${ctaBand()}`;
 
   return pageShell({
     title: 'Drywall & Painting Services | Louisville Drywall & Painting LLC',
     description:
-      'Drywall installation, repair, finishing, and interior painting for rural KY and Southern IN. Affordable labor, free estimates. Call (502) 546-2608.',
+      'Drywall installation, repair, finishing, and interior painting in Louisville and surrounding KY and Southern IN. Affordable labor, free estimates. Call (502) 546-2608.',
     canonical,
     schema,
     body,

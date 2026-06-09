@@ -72,7 +72,6 @@ function headerHtml() {
       </button>
       <nav class="nav" id="nav">
         <a href="/services" class="nav__link">Services</a>
-        <a href="/#affordable" class="nav__link">Affordable</a>
         <a href="/#gallery" class="nav__link">Our Work</a>
         <a href="/#areas" class="nav__link">Service Area</a>
         <a href="/#reviews" class="nav__link">Reviews</a>

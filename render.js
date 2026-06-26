@@ -112,10 +112,11 @@ function footerHtml() {
             <a href="tel:+15025462608">Call ${BUSINESS.phoneDisplay}</a>
             <a href="mailto:${BUSINESS.email}">${BUSINESS.email}</a>
             <a href="${BUSINESS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="/policies">Policies &amp; Terms</a>
           </nav>
         </div>
       </div>
-      <p class="footer__copy">&copy; ${new Date().getFullYear()} ${escapeHtml(BUSINESS.name)}. Rural Kentucky &amp; Southern Indiana.</p>
+      <p class="footer__copy">&copy; ${new Date().getFullYear()} ${escapeHtml(BUSINESS.name)}. <a href="/policies">Policies</a> · Rural Kentucky &amp; Southern Indiana.</p>
     </div>
   </footer>
   <aside class="sticky-cta" id="stickyCta" aria-label="Quick actions">
@@ -447,8 +448,142 @@ function renderServicesHub() {
   });
 }
 
+function renderPoliciesPage() {
+  const canonical = `${BUSINESS.siteUrl}/policies`;
+  const schema = [
+    businessSchema(),
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: 'Policies & Terms',
+      description:
+        'Booking, deposit, payment, and service policies for Louisville Drywall & Painting LLC.',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: BUSINESS.siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Policies & Terms', item: canonical },
+      ],
+    },
+  ];
+
+  const body = `
+    <section class="page-hero">
+      <div class="container">
+        <ol class="breadcrumbs">${breadcrumbs([
+          { href: '/', label: 'Home' },
+          { label: 'Policies & Terms' },
+        ])}</ol>
+        <h1 class="page-hero__title">Policies &amp; Terms</h1>
+        <p class="page-hero__desc">Clear, straightforward policies for estimates, deposits, scheduling, and payment. Questions? <a href="tel:+15025462608">Call ${BUSINESS.phoneDisplay}</a> or <a href="/#schedule">contact us</a>.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container policy-prose">
+        <p class="policy-prose__updated">Last updated: ${new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
+
+        <h2>About these policies</h2>
+        <p>These policies apply to drywall and painting services provided by ${escapeHtml(BUSINESS.name)} in Louisville, surrounding communities, and rural areas across Kentucky and Southern Indiana. By scheduling work with us, you agree to the terms below.</p>
+
+        <h2>Free estimates</h2>
+        <ul>
+          <li>We provide free on-site estimates for qualifying projects.</li>
+          <li>Estimates are based on visible conditions at the time of our visit. Hidden damage, code issues, or changes to scope may require a revised quote.</li>
+          <li>Written or verbal quotes are valid for <strong>30 days</strong> unless otherwise noted.</li>
+          <li>Not sure if we serve your area? Contact us with your town before scheduling — we will confirm coverage.</li>
+        </ul>
+
+        <h2>Deposits</h2>
+        <ul>
+          <li>For any job with a total labor quote <strong>over $1,000</strong>, we require a <strong>15% deposit</strong> to reserve your project on our schedule.</li>
+          <li>The deposit is calculated from the agreed labor total shown on your estimate.</li>
+          <li>Deposits are due before work is scheduled or before materials are staged, whichever comes first.</li>
+          <li>Jobs under $1,000 generally do not require a deposit unless special ordering or scheduling arrangements are needed.</li>
+          <li>Deposits are applied toward your final balance and are non-refundable if you cancel after we have reserved dates or declined other work to hold your slot.</li>
+        </ul>
+
+        <h2>Materials</h2>
+        <ul>
+          <li><strong>You purchase your own materials</strong> — including drywall, mud, tape, primer, paint, and related supplies.</li>
+          <li>We charge for labor only. This keeps your costs transparent and lets you choose the products you want.</li>
+          <li>Materials must be on-site and ready before we begin, unless otherwise agreed in writing.</li>
+          <li>We are not responsible for product defects, color mismatch, or manufacturer issues with customer-supplied materials.</li>
+        </ul>
+
+        <h2>Scheduling &amp; access</h2>
+        <ul>
+          <li>We schedule work Monday through Saturday, 8:00 AM – 6:00 PM, subject to availability.</li>
+          <li>Please provide clear access to the work area, electricity, and a safe workspace.</li>
+          <li>We will confirm your appointment by phone or email before arrival.</li>
+          <li>If we cannot access the job site at the scheduled time, a return trip may delay completion and could affect pricing for mobilization.</li>
+        </ul>
+
+        <h2>Cancellations &amp; rescheduling</h2>
+        <ul>
+          <li>Please give at least <strong>48 hours notice</strong> if you need to cancel or reschedule.</li>
+          <li>Cancellations with less than 48 hours notice on reserved jobs over $1,000 may forfeit the deposit.</li>
+          <li>Weather, safety concerns, or unforeseen site conditions may require rescheduling — we will communicate as early as possible.</li>
+        </ul>
+
+        <h2>Payment</h2>
+        <ul>
+          <li>Remaining balance is due upon substantial completion of the agreed scope of work unless other terms are written on your estimate.</li>
+          <li>We accept payment methods agreed upon at booking (e.g. check, cash, or electronic payment where available).</li>
+          <li>Late payment may result in paused work and reasonable collection of any outstanding balance.</li>
+        </ul>
+
+        <h2>Changes to scope</h2>
+        <ul>
+          <li>Any work outside the original estimate — extra rooms, repairs discovered after demo, texture changes, etc. — requires approval and may be billed separately.</li>
+          <li>We will communicate change-order pricing before performing additional work whenever possible.</li>
+        </ul>
+
+        <h2>Workmanship</h2>
+        <ul>
+          <li>We stand behind our labor and take pride in professional drywall and painting finishes.</li>
+          <li>If you have a concern about our work, notify us within <strong>14 days</strong> of completion so we can review the issue.</li>
+          <li>Warranty covers labor defects under normal use; it does not cover damage from moisture intrusion, structural movement, customer-supplied materials, or work performed by others after we leave.</li>
+        </ul>
+
+        <h2>Liability</h2>
+        <ul>
+          <li>Homeowners are responsible for moving furniture, valuables, and fragile items unless furniture moving was included in the estimate.</li>
+          <li>We carry reasonable care for your property while on site but are not liable for pre-existing conditions, hidden defects, or normal construction dust in active work areas.</li>
+          <li>We are not licensed electricians, plumbers, or HVAC contractors — we do not perform work outside drywall and interior painting unless explicitly quoted.</li>
+        </ul>
+
+        <h2>Privacy &amp; communication</h2>
+        <ul>
+          <li>Information you submit through our website contact form or by phone/email is used only to respond to your inquiry and schedule estimates.</li>
+          <li>We do not sell your personal information.</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>Questions about these policies or your project?</p>
+        <ul>
+          <li><strong>Phone:</strong> <a href="tel:+15025462608">${BUSINESS.phoneDisplay}</a></li>
+          <li><strong>Email:</strong> <a href="mailto:${BUSINESS.email}">${BUSINESS.email}</a></li>
+          <li><strong>Schedule online:</strong> <a href="/#schedule">Request a free estimate</a></li>
+        </ul>
+      </div>
+    </section>
+    ${ctaBand()}`;
+
+  return pageShell({
+    title: 'Policies & Terms | Louisville Drywall & Painting LLC',
+    description:
+      'Deposit, payment, scheduling, and service policies for Louisville Drywall & Painting LLC. 15% deposit on jobs over $1,000. Call (502) 546-2608.',
+    canonical,
+    schema,
+    body,
+  });
+}
+
 module.exports = {
   renderServicePage,
   renderLocationPage,
   renderServicesHub,
+  renderPoliciesPage,
 };

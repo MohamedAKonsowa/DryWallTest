@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const { SERVICES, LOCATIONS, getSitemapPaths } = require('./site-data');
-const { renderServicePage, renderLocationPage, renderServicesHub } = require('./render');
+const { renderServicePage, renderLocationPage, renderServicesHub, renderPoliciesPage } = require('./render');
 
 const app = express();
 app.disable('x-powered-by');
@@ -54,6 +54,10 @@ ${urls}
 
 app.get('/services', (_req, res) => {
   res.type('html').send(renderServicesHub());
+});
+
+app.get('/policies', (_req, res) => {
+  res.type('html').send(renderPoliciesPage());
 });
 
 SERVICES.forEach((service) => {

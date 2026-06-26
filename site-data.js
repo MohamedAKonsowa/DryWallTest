@@ -169,6 +169,7 @@ function getSitemapPaths() {
   return [
     '/',
     '/services',
+    '/policies',
     ...SERVICES.map((s) => s.path),
     ...LOCATIONS.map((l) => l.path),
   ];

@@ -4,8 +4,16 @@ const BUSINESS = {
   phoneDisplay: '(502) 546-2608',
   email: 'quotes@louisvilledrywallpaints.org',
   facebook: 'https://www.facebook.com/profile.php?id=61590733854853',
+  angi: 'https://www.angi.com/companylist/us/ky/louisville/louisville-drywall-and-paints-reviews-162824847.htm',
+  thumbtack:
+    'https://www.thumbtack.com/ky/louisville/drywall-repair/louisville-drywall-painting/service/581785818697179146',
+  yelp: 'https://www.yelp.com/biz/louisville-drywall-and-painting-louisville',
   siteUrl: process.env.SITE_URL || 'https://louisvilledrywallpaints.com',
 };
+
+function getSameAs() {
+  return [BUSINESS.facebook, BUSINESS.angi, BUSINESS.thumbtack, BUSINESS.yelp];
+}
 
 const SERVICES = [
   {
@@ -175,4 +183,4 @@ function getSitemapPaths() {
   ];
 }
 
-module.exports = { BUSINESS, SERVICES, LOCATIONS, getSitemapPaths };
+module.exports = { BUSINESS, SERVICES, LOCATIONS, getSitemapPaths, getSameAs };

@@ -1,4 +1,4 @@
-const { BUSINESS, SERVICES, LOCATIONS } = require('./site-data');
+const { BUSINESS, SERVICES, LOCATIONS, getSameAs } = require('./site-data');
 
 function escapeHtml(str) {
   return String(str)
@@ -17,7 +17,7 @@ function businessSchema() {
     url: BUSINESS.siteUrl,
     telephone: BUSINESS.phone.replace(/\s/g, ''),
     email: BUSINESS.email,
-    sameAs: [BUSINESS.facebook],
+    sameAs: getSameAs(),
     description:
       'Louisville Drywall & Painting LLC — drywall contractor and interior painter serving rural Kentucky and Southern Indiana.',
     image: `${BUSINESS.siteUrl}/images/work-vaulted.png`,
@@ -44,6 +44,12 @@ function businessSchema() {
       'Interior painting',
       'Home renovation',
     ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      reviewCount: '2',
+      bestRating: '5',
+    },
   };
 }
 
@@ -112,6 +118,9 @@ function footerHtml() {
             <a href="tel:+15025462608">Call ${BUSINESS.phoneDisplay}</a>
             <a href="mailto:${BUSINESS.email}">${BUSINESS.email}</a>
             <a href="${BUSINESS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="${BUSINESS.thumbtack}" target="_blank" rel="noopener noreferrer">Thumbtack</a>
+            <a href="${BUSINESS.yelp}" target="_blank" rel="noopener noreferrer">Yelp</a>
+            <a href="${BUSINESS.angi}" target="_blank" rel="noopener noreferrer">Angi</a>
             <a href="/policies">Policies &amp; Terms</a>
           </nav>
         </div>
@@ -138,15 +147,22 @@ function pageShell({ title, description, canonical, schema, body }) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="${escapeHtml(description)}">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="${escapeHtml(canonical)}">
   <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="/images/logo.png">
   <title>${escapeHtml(title)}</title>
   <meta property="og:type" content="website">
   <meta property="og:url" content="${escapeHtml(canonical)}">
+  <meta property="og:site_name" content="${escapeHtml(BUSINESS.name)}">
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:image" content="${BUSINESS.siteUrl}/images/work-vaulted.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="${escapeHtml(title)}">
+  <meta name="twitter:description" content="${escapeHtml(description)}">
+  <meta name="twitter:image" content="${BUSINESS.siteUrl}/images/work-vaulted.png">
   <script type="application/ld+json">${schemaJson}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

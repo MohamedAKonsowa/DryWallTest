@@ -1705,27 +1705,58 @@ body.has-sticky-cta {
   background: var(--color-surface);
 }
 
-.brochure-viewer .brochure-frame-wrap {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: #1a1a1a;
-  box-shadow: var(--shadow-lg);
-  min-height: 70vh;
+.brochure-viewer {
+  padding: 1.5rem 0 4rem;
+  background: #eceae6;
 }
 
-.brochure-frame {
+.brochure-viewer__inner {
   width: 100%;
-  height: 78vh;
-  min-height: 560px;
-  border: 0;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.brochure-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.brochure-page {
+  margin: 0;
+  width: min(1500px, 95vw);
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+.brochure-page img {
   display: block;
-  background: #525659;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.brochure-page figcaption {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: #f7f6f4;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .brochure-fallback {
   text-align: center;
-  margin: 1rem 0 2rem;
+  margin: 2rem 0 0;
   color: var(--color-text-muted);
 }
 
@@ -1734,35 +1765,8 @@ body.has-sticky-cta {
   font-weight: 600;
 }
 
-.brochure-preview {
-  display: none;
-  max-width: 420px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.brochure-preview img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow);
-}
-
-.brochure-preview figcaption {
-  margin-top: 0.75rem;
-  color: var(--color-text-muted);
-  font-size: 0.9375rem;
-}
-
-@media (max-width: 767px) {
-  .brochure-viewer .brochure-frame-wrap {
-    display: none;
-  }
-
-  .brochure-preview {
-    display: block;
-  }
+.page-hero--brochure {
+  padding-bottom: 1.5rem;
 }
 
 @media (max-width: 900px) {
@@ -1788,6 +1792,22 @@ body.has-sticky-cta {
   .brochure__card {
     max-width: 360px;
     margin: 0 auto;
+  }
+
+  .brochure-viewer {
+    padding: 1rem 0 3rem;
+  }
+
+  .brochure-viewer__inner {
+    padding: 0 0.75rem;
+  }
+
+  .brochure-pages {
+    gap: 1.25rem;
+  }
+
+  .brochure-page {
+    width: 100%;
   }
 }
 

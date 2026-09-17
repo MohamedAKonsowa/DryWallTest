@@ -647,41 +647,43 @@ function renderBrochurePage() {
   ];
 
   const body = `
-    <section class="page-hero">
+    <section class="page-hero page-hero--brochure">
       <div class="container">
         <ol class="breadcrumbs">${breadcrumbs([
           { href: '/', label: 'Home' },
           { label: 'Brochure' },
         ])}</ol>
         <h1 class="page-hero__title">Homeowner Brochure</h1>
-        <p class="page-hero__desc">A quick overview of our drywall patching, repair, finishing, and painting services for Louisville-area homeowners. View it below or download the PDF.</p>
+        <p class="page-hero__desc">Scroll through all 3 pages below, or download the PDF. Drywall patching, repair, finishing, and painting for Louisville-area homeowners.</p>
         <div class="brochure-actions">
           <a href="${pdfUrl}" class="btn btn--primary" download>Download PDF</a>
-          <a href="${pdfUrl}" class="btn btn--outline-primary" target="_blank" rel="noopener noreferrer">Open in New Tab</a>
+          <a href="${pdfUrl}" class="btn btn--outline-primary" target="_blank" rel="noopener noreferrer">Open PDF</a>
           <a href="/#schedule" class="btn btn--outline-primary">Book Free Estimate</a>
         </div>
       </div>
     </section>
-    <section class="section brochure-viewer">
-      <div class="container">
-        <div class="brochure-frame-wrap">
-          <iframe
-            class="brochure-frame"
-            title="Louisville Drywall &amp; Painting homeowner brochure PDF"
-            src="${pdfUrl}#view=FitH"
-            loading="lazy"
-          ></iframe>
+    <section class="brochure-viewer" aria-label="Brochure pages">
+      <div class="brochure-viewer__inner">
+        <div class="brochure-pages" role="list">
+          <figure class="brochure-page" role="listitem">
+            <img src="/images/brochure-page-1.png" alt="Louisville Drywall &amp; Painting homeowner brochure — page 1" width="1700" height="2200" fetchpriority="high">
+            <figcaption>Page 1 of 3</figcaption>
+          </figure>
+          <figure class="brochure-page" role="listitem">
+            <img src="/images/brochure-page-2.png" alt="Louisville Drywall &amp; Painting homeowner brochure — page 2" width="1700" height="2200" loading="lazy">
+            <figcaption>Page 2 of 3</figcaption>
+          </figure>
+          <figure class="brochure-page" role="listitem">
+            <img src="/images/brochure-page-3.png" alt="Louisville Drywall &amp; Painting homeowner brochure — page 3" width="1700" height="2200" loading="lazy">
+            <figcaption>Page 3 of 3</figcaption>
+          </figure>
         </div>
         <p class="brochure-fallback">
-          PDF not showing?
-          <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer">Open the brochure</a>
+          Prefer the original file?
+          <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer">Open the PDF</a>
           or
           <a href="${pdfUrl}" download>download it</a>.
         </p>
-        <figure class="brochure-preview">
-          <img src="${BUSINESS.brochurePreview}" alt="Preview of the Louisville Drywall &amp; Painting LLC homeowner brochure" width="1081" height="1400" loading="lazy">
-          <figcaption>Brochure preview — 3 pages covering services, patch jobs, and how to request an estimate.</figcaption>
-        </figure>
       </div>
     </section>
     ${ctaBand()}`;

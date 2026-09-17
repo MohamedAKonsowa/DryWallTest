@@ -16,7 +16,7 @@ const SITE_DOMAINS = [PRIMARY_DOMAIN, SECONDARY_DOMAIN].filter(
   (domain, index, list) => domain && list.indexOf(domain) === index
 );
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'quotes@louisvilledrywallpaints.org';
-const CONTACT_PHONE = process.env.CONTACT_PHONE || '+1 5025462608';
+const CONTACT_PHONE = process.env.CONTACT_PHONE || '+1 5022180426';
 
 app.use(express.json());
 
@@ -35,7 +35,12 @@ app.get('/sitemap.xml', (_req, res) => {
   const urls = SITE_DOMAINS.flatMap((domain) =>
     paths.map((pagePath) => {
       const loc = pagePath === '/' ? `https://${domain}/` : `https://${domain}${pagePath}`;
-      const priority = pagePath === '/' ? '1.0' : pagePath === '/services' ? '0.9' : '0.8';
+      const priority =
+        pagePath === '/'
+          ? '1.0'
+          : pagePath === '/drywall-repair' || pagePath === '/services'
+            ? '0.9'
+            : '0.8';
       return `  <url>
     <loc>${loc}</loc>
     <changefreq>weekly</changefreq>
@@ -58,6 +63,10 @@ app.get('/services', (_req, res) => {
 
 app.get('/policies', (_req, res) => {
   res.type('html').send(renderPoliciesPage());
+});
+
+app.get('/drywall-patching', (_req, res) => {
+  res.redirect(301, '/drywall-repair');
 });
 
 SERVICES.forEach((service) => {

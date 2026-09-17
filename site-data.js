@@ -1,7 +1,7 @@
 const BUSINESS = {
   name: 'Louisville Drywall & Painting LLC',
-  phone: '+1 5025462608',
-  phoneDisplay: '(502) 546-2608',
+  phone: '+1 5022180426',
+  phoneDisplay: '(502) 218-0426',
   email: 'quotes@louisvilledrywallpaints.org',
   facebook: 'https://www.facebook.com/profile.php?id=61590733854853',
   angi: 'https://www.angi.com/companylist/us/ky/louisville/louisville-drywall-and-paints-reviews-162824847.htm',
@@ -17,13 +17,35 @@ function getSameAs() {
 
 const SERVICES = [
   {
+    slug: 'drywall-repair',
+    path: '/drywall-repair',
+    name: 'Drywall Patching & Repair',
+    serviceType: 'Drywall patching and repair',
+    title: 'Drywall Patching & Repair in Louisville KY | Hole, Crack & Water Damage Fixes',
+    description:
+      'Drywall patching and repair in Louisville KY — nail holes, doorknob holes, cracks, water damage, and sheet replacement. Free estimates. Call (502) 218-0426.',
+    image: '/images/work-beam.png',
+    imageAlt: 'Drywall patching and repair finishing around a wood beam in a Louisville home',
+    intro:
+      'Need a wall patched fast? Louisville Drywall & Painting LLC specializes in drywall patching and repair jobs — from small nail holes and doorknob damage to crack repair, water-damaged sheets, and full wall replacements. We serve Louisville, surrounding KY communities, and rural Southern Indiana.',
+    details: [
+      'Nail holes, screw holes, and small dent patching',
+      'Doorknob holes, large holes, and cutouts for outlets or remounts',
+      'Crack repair along seams, corners, and ceiling lines',
+      'Water damage, stain repair, and sheet replacement',
+      'Texture blending so patches match the surrounding wall',
+      'Ceiling patches and multi-room repair jobs',
+    ],
+    formValue: 'Drywall Patching & Repair',
+  },
+  {
     slug: 'drywall-installation',
     path: '/drywall-installation',
     name: 'Drywall Installation',
     serviceType: 'Drywall installation',
     title: 'Drywall Installation in Louisville & Surrounding Areas | Louisville Drywall & Painting LLC',
     description:
-      'Affordable drywall installation in Louisville, surrounding KY communities, and Southern Indiana. Hung, taped, mudded, and finished. Free estimates. Call (502) 546-2608.',
+      'Affordable drywall installation in Louisville, surrounding KY communities, and Southern Indiana. Hung, taped, mudded, and finished. Free estimates. Call (502) 218-0426.',
     image: '/images/work-vaulted.png',
     imageAlt: 'Drywall installation on a vaulted ceiling during a Louisville area home remodel',
     intro:
@@ -37,33 +59,13 @@ const SERVICES = [
     formValue: 'Drywall Installation',
   },
   {
-    slug: 'drywall-repair',
-    path: '/drywall-repair',
-    name: 'Drywall Repair',
-    serviceType: 'Drywall repair',
-    title: 'Drywall Repair in Louisville & Surrounding Areas | Louisville Drywall & Painting LLC',
-    description:
-      'Drywall repair in Louisville and surrounding KY and Southern Indiana. Hole patching, cracks, and water damage fixes. Free estimates. Call (502) 546-2608.',
-    image: '/images/work-beam.png',
-    imageAlt: 'Drywall repair and finishing around a wood beam in a Louisville area home',
-    intro:
-      'Holes, cracks, water damage, or bad patches? We repair drywall in Louisville, surrounding communities, and rural homes across Kentucky and Southern Indiana — from a single wall to whole-room fixes.',
-    details: [
-      'Hole and crack patching for Louisville-area homes',
-      'Water damage and stain repair',
-      'Texture blending and seamless patches',
-      'Ceiling and wall repairs in homes, farmhouses, and country properties',
-    ],
-    formValue: 'Drywall Repair',
-  },
-  {
     slug: 'drywall-finishing',
     path: '/drywall-finishing',
     name: 'Drywall Finishing',
     serviceType: 'Drywall finishing',
     title: 'Drywall Finishing in Louisville & Surrounding Areas | Louisville Drywall & Painting LLC',
     description:
-      'Smooth, paint-ready drywall finishing in Louisville and surrounding areas. Taping, mudding, and sanding across KY and Southern IN. Free estimates. Call (502) 546-2608.',
+      'Smooth, paint-ready drywall finishing in Louisville and surrounding areas. Taping, mudding, and sanding across KY and Southern IN. Free estimates. Call (502) 218-0426.',
     image: '/images/work-garage.png',
     imageAlt: 'Garage drywall taped and mudded for a smooth paint-ready finish in Louisville area',
     intro:
@@ -83,15 +85,15 @@ const SERVICES = [
     serviceType: 'Interior painting',
     title: 'Interior Painting in Louisville & Surrounding Areas | Louisville Drywall & Painting LLC',
     description:
-      'Affordable interior painting in Louisville and surrounding KY and Southern Indiana. Rooms, basements, and touch-ups. You buy paint — we handle labor. Call (502) 546-2608.',
+      'Affordable interior painting in Louisville and surrounding KY and Southern Indiana. Rooms, basements, and touch-ups after drywall patch jobs. Call (502) 218-0426.',
     image: '/images/basement.jpg',
     imageAlt: 'Interior painting prep on walls in a Louisville area home',
     intro:
-      'Fresh paint transforms a room. We handle interior painting labor for Louisville homeowners and surrounding communities — rooms, basements, trim, and touch-ups — while you choose and buy the paint.',
+      'Fresh paint transforms a room — especially after a patch or repair. We handle interior painting labor for Louisville homeowners and surrounding communities — rooms, basements, trim, and touch-ups — while you choose and buy the paint.',
     details: [
       'Room and basement painting in Louisville and nearby',
+      'Touch-ups after drywall patches and repairs',
       'Wall and ceiling prep and painting',
-      'Trim and touch-up work',
       'You purchase paint and supplies — affordable labor-only pricing',
     ],
     formValue: 'Interior Painting',
@@ -105,11 +107,11 @@ const LOCATIONS = [
     city: 'Shelbyville',
     state: 'Kentucky',
     stateAbbr: 'KY',
-    title: 'Drywall & Painting Contractor in Shelbyville, KY | Louisville Drywall & Painting LLC',
+    title: 'Drywall Patching & Repair in Shelbyville, KY | Louisville Drywall & Painting LLC',
     description:
-      'Drywall installation, repair, finishing, and interior painting in Shelbyville, KY and surrounding rural areas. Free estimates. Call (502) 546-2608.',
+      'Drywall patching, hole repair, crack fixes, and painting in Shelbyville, KY. Free on-site estimates. Call (502) 218-0426.',
     intro:
-      'Serving Shelbyville and the surrounding countryside with affordable drywall and painting work. We travel to rural homes and small-town remodels throughout Shelby County.',
+      'Serving Shelbyville and Shelby County with drywall patching, repair jobs, installation, and painting. From nail holes to full wall replacements, we travel to rural homes and small-town remodels.',
   },
   {
     slug: 'la-grange-ky',
@@ -117,11 +119,11 @@ const LOCATIONS = [
     city: 'La Grange',
     state: 'Kentucky',
     stateAbbr: 'KY',
-    title: 'Drywall & Painting Contractor in La Grange, KY | Louisville Drywall & Painting LLC',
+    title: 'Drywall Patching & Repair in La Grange, KY | Louisville Drywall & Painting LLC',
     description:
-      'Drywall and interior painting for La Grange, KY area homes and farmhouses. Affordable rates, free on-site estimates. Call (502) 546-2608.',
+      'Drywall patching and repair for La Grange, KY homes — holes, cracks, water damage, plus finishing and paint. Free estimates. Call (502) 218-0426.',
     intro:
-      'La Grange and Oldham County homeowners trust our small crew for drywall installs, repairs, finishing, and painting — without big-contractor pricing.',
+      'La Grange and Oldham County homeowners call us for drywall patch jobs, hole and crack repair, sheet replacement, finishing, and painting — without big-contractor pricing.',
   },
   {
     slug: 'bardstown-ky',
@@ -129,11 +131,11 @@ const LOCATIONS = [
     city: 'Bardstown',
     state: 'Kentucky',
     stateAbbr: 'KY',
-    title: 'Drywall & Painting Contractor in Bardstown, KY | Louisville Drywall & Painting LLC',
+    title: 'Drywall Patching & Repair in Bardstown, KY | Louisville Drywall & Painting LLC',
     description:
-      'Affordable drywall contractor serving Bardstown, KY and rural Nelson County. Installation, repair, finishing, and painting. Call (502) 546-2608.',
+      'Affordable drywall patching and repair in Bardstown, KY and Nelson County. Holes, cracks, water damage. Call (502) 218-0426.',
     intro:
-      'From Bardstown farmhouses to country home remodels, we provide drywall and painting labor across Nelson County and nearby rural communities.',
+      'From Bardstown farmhouses to country home repair jobs, we patch drywall, replace damaged sheets, finish walls, and paint across Nelson County.',
   },
   {
     slug: 'corydon-in',
@@ -141,11 +143,11 @@ const LOCATIONS = [
     city: 'Corydon',
     state: 'Indiana',
     stateAbbr: 'IN',
-    title: 'Drywall & Painting Contractor in Corydon, IN | Louisville Drywall & Painting LLC',
+    title: 'Drywall Patching & Repair in Corydon, IN | Louisville Drywall & Painting LLC',
     description:
-      'Drywall installation, repair, and painting in Corydon, IN and Harrison County. Rural Southern Indiana service. Free estimates. Call (502) 546-2608.',
+      'Drywall patching, repair, and painting in Corydon, IN and Harrison County. Rural Southern Indiana service. Call (502) 218-0426.',
     intro:
-      'We cross the river to serve Corydon and rural Harrison County with affordable drywall and interior painting — free on-site estimates for every job.',
+      'We cross the river to serve Corydon and rural Harrison County with drywall patching, hole repair, crack fixes, and interior painting — free on-site estimates for every job.',
   },
   {
     slug: 'madison-in',
@@ -153,11 +155,11 @@ const LOCATIONS = [
     city: 'Madison',
     state: 'Indiana',
     stateAbbr: 'IN',
-    title: 'Drywall & Painting Contractor in Madison, IN | Louisville Drywall & Painting LLC',
+    title: 'Drywall Patching & Repair in Madison, IN | Louisville Drywall & Painting LLC',
     description:
-      'Drywall and painting services in Madison, IN and Jefferson County. Small crew, fair rates, free estimates. Call (502) 546-2608.',
+      'Drywall patching and repair in Madison, IN and Jefferson County. Small crew, fair rates, free estimates. Call (502) 218-0426.',
     intro:
-      'Madison and Jefferson County homeowners call us for drywall installation, repair, finishing, and room painting at affordable labor rates.',
+      'Madison and Jefferson County homeowners call us for drywall patch jobs, repair, installation, finishing, and room painting at affordable labor rates.',
   },
   {
     slug: 'salem-in',
@@ -165,11 +167,11 @@ const LOCATIONS = [
     city: 'Salem',
     state: 'Indiana',
     stateAbbr: 'IN',
-    title: 'Drywall & Painting Contractor in Salem, IN | Louisville Drywall & Painting LLC',
+    title: 'Drywall Patching & Repair in Salem, IN | Louisville Drywall & Painting LLC',
     description:
-      'Affordable drywall contractor in Salem, IN and Washington County. Installation, repair, finishing, and painting. Call (502) 546-2608.',
+      'Affordable drywall patching and repair in Salem, IN and Washington County. Holes, cracks, water damage. Call (502) 218-0426.',
     intro:
-      'Serving Salem and rural Washington County with hands-on drywall and painting work — we come to your home and provide a clear, no-pressure quote.',
+      'Serving Salem and rural Washington County with drywall patching, repair jobs, finishing, and painting — we come to your home and provide a clear, no-pressure quote.',
   },
 ];
 

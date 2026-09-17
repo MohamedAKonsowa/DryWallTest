@@ -19,7 +19,7 @@ function businessSchema() {
     email: BUSINESS.email,
     sameAs: getSameAs(),
     description:
-      'Louisville Drywall & Painting LLC — drywall contractor and interior painter serving rural Kentucky and Southern Indiana.',
+      'Louisville Drywall & Painting LLC — drywall patching, hole and crack repair, sheet replacement, finishing, and interior painting in Louisville, KY and surrounding areas.',
     image: `${BUSINESS.siteUrl}/images/work-vaulted.png`,
     priceRange: '$',
     address: {
@@ -34,15 +34,19 @@ function businessSchema() {
       longitude: -85.7585,
     },
     areaServed: [
+      { '@type': 'City', name: 'Louisville', containedInPlace: { '@type': 'State', name: 'Kentucky' } },
       { '@type': 'State', name: 'Kentucky' },
       { '@type': 'State', name: 'Indiana' },
     ],
     knowsAbout: [
+      'Drywall patching',
+      'Drywall hole repair',
+      'Drywall crack repair',
+      'Water damage drywall repair',
+      'Drywall sheet replacement',
       'Drywall installation',
-      'Drywall repair',
       'Drywall finishing',
       'Interior painting',
-      'Home renovation',
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -115,7 +119,7 @@ function footerHtml() {
           <h3 class="footer__col-title">Contact</h3>
           <nav class="footer__col-links">
             <a href="/#schedule">Book a Visit</a>
-            <a href="tel:+15025462608">Call ${BUSINESS.phoneDisplay}</a>
+            <a href="tel:+15022180426">Call ${BUSINESS.phoneDisplay}</a>
             <a href="mailto:${BUSINESS.email}">${BUSINESS.email}</a>
             <a href="${BUSINESS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
             <a href="${BUSINESS.thumbtack}" target="_blank" rel="noopener noreferrer">Thumbtack</a>
@@ -130,7 +134,7 @@ function footerHtml() {
   </footer>
   <aside class="sticky-cta" id="stickyCta" aria-label="Quick actions">
     <a href="/#schedule" class="sticky-cta__primary">Book Free Estimate</a>
-    <a href="tel:+15025462608" class="sticky-cta__call">Call Now</a>
+    <a href="tel:+15022180426" class="sticky-cta__call">Call Now</a>
   </aside>`;
 }
 
@@ -197,7 +201,7 @@ function serviceAreasBlock() {
           <p class="areas__note"><strong>Not sure if we serve your area?</strong> Call, email, or use the contact form with your town — we'll let you know if we can come out to you.</p>
           <div class="areas__cta-actions">
             <a href="${scheduleLink()}" class="btn btn--primary">Ask About Your Area</a>
-            <a href="tel:+15025462608" class="btn btn--outline-primary">Call ${BUSINESS.phoneDisplay}</a>
+            <a href="tel:+15022180426" class="btn btn--outline-primary">Call ${BUSINESS.phoneDisplay}</a>
           </div>
         </div>
       </div>
@@ -218,10 +222,10 @@ function ctaBand(serviceName, locationHint) {
   return `<section class="page-cta">
     <div class="container page-cta__inner">
       <h2 class="page-cta__title">Get a free on-site estimate</h2>
-      <p class="page-cta__text">Affordable rates, no obligation. We'll come to you and provide a clear labor quote.</p>
+      <p class="page-cta__text">Patch jobs, repairs, installs, and paint — free on-site quote, no obligation.</p>
       <div class="page-cta__actions">
         <a href="${scheduleUrl}" class="btn btn--primary btn--lg">Schedule Free Estimate</a>
-        <a href="tel:+15025462608" class="btn btn--outline-dark btn--lg">Call ${BUSINESS.phoneDisplay}</a>
+        <a href="tel:+15022180426" class="btn btn--outline-dark btn--lg">Call ${BUSINESS.phoneDisplay}</a>
       </div>
     </div>
   </section>`;
@@ -287,8 +291,15 @@ function renderServicePage(service) {
         <div class="page-content__main">
           <h2>What we offer</h2>
           <ul class="page-list">${service.details.map((d) => `<li>${escapeHtml(d)}</li>`).join('')}</ul>
+          ${
+            service.slug === 'drywall-repair'
+              ? `<h2>Patch jobs we handle every week</h2>
+          <p>Most calls are for everyday drywall patching: nail and screw holes after removing shelves or TVs, doorknob holes in hallways, cracks along seams and corners, water stains on ceilings, and replacing a soft or damaged sheet. We also blend texture so the patch matches the rest of the wall before paint.</p>
+          <p>Small single-wall patches and multi-room repair jobs are both welcome — tell us what you see and we'll quote the labor on-site.</p>`
+              : ''
+          }
           <h2>Why choose our small crew?</h2>
-          <p>We're not a big contractor with layers of markup. Louisville Drywall &amp; Painting LLC is a local crew that shows up when we say we will, keeps rates affordable, and treats your rural home with respect. You buy your own materials — we charge fair labor-only pricing.</p>
+          <p>We're not a big contractor with layers of markup. Louisville Drywall &amp; Painting LLC is a local crew that shows up when we say we will, keeps rates affordable, and treats your home with respect. You buy your own materials — we charge fair labor-only pricing.</p>
           <p>We serve Louisville homeowners plus farmhouses, country homes, basements, garages, and room remodels throughout surrounding Kentucky and Southern Indiana.</p>
           <h2>Not sure if we serve your area?</h2>
           <p>Contact us with your town or address and we'll confirm whether we can come out before scheduling your free on-site estimate. We cover Louisville and surrounding communities, plus many rural areas across KY and Southern IN.</p>
@@ -354,22 +365,23 @@ function renderLocationPage(location) {
           { href: '/#areas', label: 'Service Area' },
           { label: `${location.city}, ${location.stateAbbr}` },
         ])}</ol>
-        <h1 class="page-hero__title">Drywall &amp; Painting in ${escapeHtml(location.city)}, ${location.stateAbbr}</h1>
+        <h1 class="page-hero__title">Drywall Patching &amp; Repair in ${escapeHtml(location.city)}, ${location.stateAbbr}</h1>
         <p class="page-hero__desc">${escapeHtml(location.intro)}</p>
       </div>
     </section>
     <section class="page-content section">
       <div class="container page-content__grid">
         <div class="page-content__main">
-          <h2>Drywall &amp; painting services in ${escapeHtml(location.city)}</h2>
+          <h2>Drywall jobs we take in ${escapeHtml(location.city)}</h2>
           <ul class="page-list">
+            <li>Drywall patching — nail holes, doorknob holes, and large holes</li>
+            <li>Crack repair, water damage fixes, and sheet replacement</li>
             <li>Drywall installation for remodels, basements, and additions</li>
-            <li>Drywall repair — holes, cracks, and water damage</li>
             <li>Drywall finishing — taping, mudding, and smooth walls</li>
-            <li>Interior painting — rooms, basements, and touch-ups</li>
+            <li>Interior painting and touch-ups after patch jobs</li>
           </ul>
-          <h2>Affordable rates for ${escapeHtml(location.city)} homeowners</h2>
-          <p>We're a small Louisville-based crew with low overhead, so we keep labor rates fair and affordable. Every job starts with a free on-site estimate — no pressure, no hidden fees. You purchase your own drywall, mud, tape, and paint.</p>
+          <h2>Affordable patch &amp; repair rates for ${escapeHtml(location.city)} homeowners</h2>
+          <p>We're a small Louisville-based crew with low overhead, so we keep labor rates fair for everyday patch jobs and larger repairs. Every job starts with a free on-site estimate — no pressure, no hidden fees. You purchase your own drywall, mud, tape, and paint.</p>
           <h2>Nearby areas we also serve</h2>
           <p class="page-areas">${LOCATIONS.filter((l) => l.slug !== location.slug)
             .slice(0, 5)
@@ -411,9 +423,9 @@ function renderServicesHub() {
       '@type': 'CollectionPage',
       '@id': `${canonical}#webpage`,
       url: canonical,
-      name: 'Drywall & Painting Services',
+      name: 'Drywall Patching & Repair Services',
       description:
-        'Drywall installation, repair, finishing, and interior painting services from Louisville Drywall & Painting LLC.',
+        'Drywall patching, hole and crack repair, sheet replacement, finishing, and interior painting from Louisville Drywall & Painting LLC.',
     },
     {
       '@type': 'BreadcrumbList',
@@ -444,8 +456,8 @@ function renderServicesHub() {
           { href: '/', label: 'Home' },
           { label: 'Services' },
         ])}</ol>
-        <h1 class="page-hero__title">Drywall &amp; Painting Services in Louisville</h1>
-        <p class="page-hero__desc">Louisville Drywall &amp; Painting LLC provides affordable drywall and interior painting throughout Louisville, surrounding communities, and rural areas across Kentucky and Southern Indiana.</p>
+        <h1 class="page-hero__title">Drywall Patching, Repair &amp; Painting in Louisville</h1>
+        <p class="page-hero__desc">We specialize in drywall patch jobs — holes, cracks, water damage, and sheet replacement — plus installation, finishing, and interior painting across Louisville, KY and surrounding areas.</p>
       </div>
     </section>
     <section class="section">
@@ -455,9 +467,9 @@ function renderServicesHub() {
     ${ctaBand()}`;
 
   return pageShell({
-    title: 'Drywall & Painting Services | Louisville Drywall & Painting LLC',
+    title: 'Drywall Patching & Repair Services | Louisville Drywall & Painting LLC',
     description:
-      'Drywall installation, repair, finishing, and interior painting in Louisville and surrounding KY and Southern IN. Affordable labor, free estimates. Call (502) 546-2608.',
+      'Drywall patching, hole and crack repair, sheet replacement, finishing, and painting in Louisville KY. Free estimates. Call (502) 218-0426.',
     canonical,
     schema,
     body,
@@ -493,7 +505,7 @@ function renderPoliciesPage() {
           { label: 'Policies & Terms' },
         ])}</ol>
         <h1 class="page-hero__title">Policies &amp; Terms</h1>
-        <p class="page-hero__desc">Clear, straightforward policies for estimates, deposits, scheduling, and payment. Questions? <a href="tel:+15025462608">Call ${BUSINESS.phoneDisplay}</a> or <a href="/#schedule">contact us</a>.</p>
+        <p class="page-hero__desc">Clear, straightforward policies for estimates, deposits, scheduling, and payment. Questions? <a href="tel:+15022180426">Call ${BUSINESS.phoneDisplay}</a> or <a href="/#schedule">contact us</a>.</p>
       </div>
     </section>
     <section class="section">
@@ -579,7 +591,7 @@ function renderPoliciesPage() {
         <h2>Contact</h2>
         <p>Questions about these policies or your project?</p>
         <ul>
-          <li><strong>Phone:</strong> <a href="tel:+15025462608">${BUSINESS.phoneDisplay}</a></li>
+          <li><strong>Phone:</strong> <a href="tel:+15022180426">${BUSINESS.phoneDisplay}</a></li>
           <li><strong>Email:</strong> <a href="mailto:${BUSINESS.email}">${BUSINESS.email}</a></li>
           <li><strong>Schedule online:</strong> <a href="/#schedule">Request a free estimate</a></li>
         </ul>
@@ -590,7 +602,7 @@ function renderPoliciesPage() {
   return pageShell({
     title: 'Policies & Terms | Louisville Drywall & Painting LLC',
     description:
-      'Deposit, payment, scheduling, and service policies for Louisville Drywall & Painting LLC. 15% deposit on jobs over $1,000. Call (502) 546-2608.',
+      'Deposit, payment, scheduling, and service policies for Louisville Drywall & Painting LLC. 15% deposit on jobs over $1,000. Call (502) 218-0426.',
     canonical,
     schema,
     body,

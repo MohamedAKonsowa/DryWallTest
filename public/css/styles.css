@@ -500,6 +500,11 @@ a {
   transition: box-shadow var(--transition), transform var(--transition);
 }
 
+.service-card--featured {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-primary) 40%, transparent);
+}
+
 .service-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
@@ -1596,6 +1601,55 @@ body.has-sticky-cta {
 .reviews__cta p {
   color: var(--color-text-muted);
   margin-bottom: 1rem;
+}
+
+.jobs__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+.jobs__item {
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.jobs__title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+}
+
+.jobs__text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.jobs__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .jobs__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .jobs__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .reviews__links {

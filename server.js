@@ -88,8 +88,19 @@ LOCATIONS.forEach((location) => {
 
 app.use(
   express.static(path.join(__dirname, 'public'), {
-    maxAge: process.env.NODE_ENV === 'production' ? '7d' : 0,
     etag: true,
+    setHeaders(res, filePath) {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache');
+      } else if (filePath.endsWith('.css') || filePath.endsWith('.js')) {
+        // Short cache so brochure/layout updates show up after deploy
+        res.setHeader('Cache-Control', 'public, max-age=300, must-revalidate');
+      } else if (/\.(png|jpe?g|webp|gif|svg|ico|pdf)$/i.test(filePath)) {
+        res.setHeader('Cache-Control', 'public, max-age=86400');
+      } else {
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+      }
+    },
   })
 );
 

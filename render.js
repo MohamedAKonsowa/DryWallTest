@@ -181,13 +181,13 @@ function pageShell({ title, description, canonical, schema, body }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
-</head>
+  <link rel="stylesheet" href="/css/styles.css?v=20260917b">
+  </head>
 <body>
   ${headerHtml()}
   <main>${body}</main>
   ${footerHtml()}
-  <script src="/js/main.js"></script>
+  <script src="/js/main.js?v=20260917b"></script>
 </body>
 </html>`;
 }
@@ -668,16 +668,13 @@ function renderBrochurePage() {
       <div class="brochure-viewer__inner">
         <div class="brochure-pages" role="list">
           <figure class="brochure-page" role="listitem">
-            <img src="/images/brochure-page-1.png" alt="Louisville Drywall &amp; Painting homeowner brochure — page 1" width="1700" height="2200" fetchpriority="high">
-            <figcaption>Page 1 of 3</figcaption>
+            <img src="/images/brochure-page-1.png" alt="Louisville Drywall &amp; Painting homeowner brochure" width="1700" height="2200" fetchpriority="high">
           </figure>
           <figure class="brochure-page" role="listitem">
-            <img src="/images/brochure-page-2.png" alt="Louisville Drywall &amp; Painting homeowner brochure — page 2" width="1700" height="2200" loading="lazy">
-            <figcaption>Page 2 of 3</figcaption>
+            <img src="/images/brochure-page-2.png" alt="Louisville Drywall &amp; Painting homeowner brochure" width="1700" height="2200" loading="lazy">
           </figure>
           <figure class="brochure-page" role="listitem">
-            <img src="/images/brochure-page-3.png" alt="Louisville Drywall &amp; Painting homeowner brochure — page 3" width="1700" height="2200" loading="lazy">
-            <figcaption>Page 3 of 3</figcaption>
+            <img src="/images/brochure-page-3.png" alt="Louisville Drywall &amp; Painting homeowner brochure" width="1700" height="2200" loading="lazy">
           </figure>
         </div>
         <p class="brochure-fallback">

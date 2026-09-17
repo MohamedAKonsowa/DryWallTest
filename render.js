@@ -87,6 +87,7 @@ function headerHtml() {
       </button>
       <nav class="nav" id="nav">
         <a href="/services" class="nav__link">Services</a>
+        <a href="/brochure" class="nav__link">Brochure</a>
         <a href="/#jobs" class="nav__link">Patch Jobs</a>
         <a href="/#gallery" class="nav__link">Our Work</a>
         <a href="/#areas" class="nav__link">Service Area</a>
@@ -125,6 +126,7 @@ function footerHtml() {
           <h3 class="footer__col-title">Contact</h3>
           <nav class="footer__col-links">
             <a href="/#schedule">Book a Visit</a>
+            <a href="${BUSINESS.brochurePath}" target="_blank" rel="noopener noreferrer">Homeowner Brochure (PDF)</a>
             <a href="${telHref()}">Call ${BUSINESS.phoneDisplay}</a>
             <a href="mailto:${BUSINESS.email}">${BUSINESS.email}</a>
             <a href="${BUSINESS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
@@ -615,9 +617,89 @@ function renderPoliciesPage() {
   });
 }
 
+function renderBrochurePage() {
+  const canonical = `${BUSINESS.siteUrl}/brochure`;
+  const pdfUrl = BUSINESS.brochurePath;
+  const schema = [
+    businessSchema(),
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: 'Homeowner Brochure',
+      description:
+        'Download or view the Louisville Drywall & Painting LLC homeowner brochure — drywall patching, repair, finishing, and painting services.',
+    },
+    {
+      '@type': 'DigitalDocument',
+      name: 'Louisville Drywall & Painting Homeowner Brochure',
+      encodingFormat: 'application/pdf',
+      url: `${BUSINESS.siteUrl}${pdfUrl}`,
+      about: { '@id': `${BUSINESS.siteUrl}/#business` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: BUSINESS.siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Brochure', item: canonical },
+      ],
+    },
+  ];
+
+  const body = `
+    <section class="page-hero">
+      <div class="container">
+        <ol class="breadcrumbs">${breadcrumbs([
+          { href: '/', label: 'Home' },
+          { label: 'Brochure' },
+        ])}</ol>
+        <h1 class="page-hero__title">Homeowner Brochure</h1>
+        <p class="page-hero__desc">A quick overview of our drywall patching, repair, finishing, and painting services for Louisville-area homeowners. View it below or download the PDF.</p>
+        <div class="brochure-actions">
+          <a href="${pdfUrl}" class="btn btn--primary" download>Download PDF</a>
+          <a href="${pdfUrl}" class="btn btn--outline-primary" target="_blank" rel="noopener noreferrer">Open in New Tab</a>
+          <a href="/#schedule" class="btn btn--outline-primary">Book Free Estimate</a>
+        </div>
+      </div>
+    </section>
+    <section class="section brochure-viewer">
+      <div class="container">
+        <div class="brochure-frame-wrap">
+          <iframe
+            class="brochure-frame"
+            title="Louisville Drywall &amp; Painting homeowner brochure PDF"
+            src="${pdfUrl}#view=FitH"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <p class="brochure-fallback">
+          PDF not showing?
+          <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer">Open the brochure</a>
+          or
+          <a href="${pdfUrl}" download>download it</a>.
+        </p>
+        <figure class="brochure-preview">
+          <img src="${BUSINESS.brochurePreview}" alt="Preview of the Louisville Drywall &amp; Painting LLC homeowner brochure" width="1081" height="1400" loading="lazy">
+          <figcaption>Brochure preview — 3 pages covering services, patch jobs, and how to request an estimate.</figcaption>
+        </figure>
+      </div>
+    </section>
+    ${ctaBand()}`;
+
+  return pageShell({
+    title: 'Homeowner Brochure (PDF) | Louisville Drywall & Painting LLC',
+    description:
+      'View or download the Louisville Drywall & Painting LLC homeowner brochure — drywall patching, repair, finishing, and painting. Call (502) 218-0426.',
+    canonical,
+    schema,
+    body,
+  });
+}
+
 module.exports = {
   renderServicePage,
   renderLocationPage,
   renderServicesHub,
   renderPoliciesPage,
+  renderBrochurePage,
 };

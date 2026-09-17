@@ -9,6 +9,8 @@ const BUSINESS = {
     'https://www.thumbtack.com/ky/louisville/drywall-repair/louisville-drywall-painting/service/581785818697179146',
   yelp: 'https://www.yelp.com/biz/louisville-drywall-and-painting-louisville',
   siteUrl: process.env.SITE_URL || 'https://louisvilledrywallpaints.com',
+  brochurePath: '/docs/louisville-drywall-painting-homeowner-brochure.pdf',
+  brochurePreview: '/images/brochure-preview.png',
 };
 
 function getSameAs() {
@@ -192,6 +194,7 @@ function getSitemapPaths() {
     '/',
     '/services',
     '/policies',
+    '/brochure',
     ...SERVICES.map((s) => s.path),
     ...LOCATIONS.map((l) => l.path),
   ];

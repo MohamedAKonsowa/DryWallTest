@@ -51,9 +51,10 @@ function businessSchema() {
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '5',
-      reviewCount: '2',
+      ratingValue: '4.8',
+      reviewCount: '6',
       bestRating: '5',
+      worstRating: '1',
     },
   };
 }
@@ -93,6 +94,7 @@ function headerHtml() {
         <a href="/#areas" class="nav__link">Service Area</a>
         <a href="/#reviews" class="nav__link">Reviews</a>
         <a href="/#schedule" class="nav__link nav__link--highlight">Schedule</a>
+        <a href="${telHref()}" class="nav__link nav__link--phone">${BUSINESS.phoneDisplay}</a>
         <a href="/#schedule" class="btn btn--primary nav__cta">Book Estimate</a>
       </nav>
     </div>

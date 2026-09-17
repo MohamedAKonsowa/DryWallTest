@@ -35,6 +35,7 @@
       'contactPhoneLink',
       'footerPhoneLink',
       'stickyCallBtn',
+      'headerPhoneLink',
     ];
 
     ids.forEach((id) => {
@@ -42,10 +43,10 @@
       if (!el) return;
       el.href = tel;
       if (id === 'contactPhoneLink') return;
-      if (id === 'heroCallBtn') {
+      if (id === 'heroCallBtn' || id === 'stepsCallLink') {
         el.textContent = `Call ${formatPhoneDisplay(phone)}`;
-      } else if (id === 'stepsCallLink') {
-        el.textContent = `Call ${formatPhoneDisplay(phone)}`;
+      } else if (id === 'headerPhoneLink') {
+        el.textContent = formatPhoneDisplay(phone);
       } else if (id === 'stickyCallBtn') {
         el.textContent = 'Call Now';
         el.setAttribute('aria-label', `Call ${formatPhoneDisplay(phone)}`);

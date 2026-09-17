@@ -318,6 +318,11 @@ a {
   font-weight: 600;
 }
 
+.nav__link--phone {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .nav__cta {
   margin-top: 1.5rem;
   text-align: center;
@@ -1569,7 +1574,7 @@ body.has-sticky-cta {
 /* Reviews / trust */
 .reviews__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
   margin-bottom: 2rem;
 }
@@ -1579,28 +1584,70 @@ body.has-sticky-cta {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.review-card__stars {
+  margin: 0;
+  color: #c47a1a;
+  letter-spacing: 0.08em;
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .review-card__title {
   font-size: 1.0625rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 .review-card__text {
+  color: var(--color-text);
+  font-size: 0.975rem;
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.review-card__meta {
+  margin: 0;
+  font-size: 0.875rem;
   color: var(--color-text-muted);
-  font-size: 0.9375rem;
+}
+
+.review-card--cta {
+  background: var(--color-surface);
+  justify-content: center;
+}
+
+.review-card--cta .btn {
+  align-self: flex-start;
+  margin-top: 0.35rem;
 }
 
 .reviews__cta {
   text-align: center;
-  max-width: 520px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
 .reviews__cta p {
   color: var(--color-text-muted);
   margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .reviews__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .jobs__grid {
@@ -2102,10 +2149,6 @@ body.has-sticky-cta {
 }
 
 @media (min-width: 640px) {
-  .reviews__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .footer__columns {
     grid-template-columns: repeat(3, 1fr);
   }

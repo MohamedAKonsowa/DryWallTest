@@ -129,7 +129,7 @@
         access_key: accessKey,
         subject: `Estimate Request: ${payload.service} — ${payload.location}`,
         name: payload.name,
-        email: payload.email,
+        email: payload.email || 'no-email-provided@louisvilledrywallpaints.org',
         phone: payload.phone,
         message: payload.message,
         service: payload.service,
@@ -281,15 +281,24 @@
       details: formData.get('message')?.toString().trim(),
     };
 
-    if (!fields.service || !fields.location || !fields.name || !fields.phone || !fields.email) {
-      formStatus.textContent = 'Please fill in all required fields.';
+    if (!fields.service || !fields.location || !fields.name || !fields.phone) {
+      formStatus.textContent = 'Please add your service, town, name, and phone number.';
       formStatus.className = 'form-status error';
       return;
     }
 
+    if (fields.email) {
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email);
+      if (!emailOk) {
+        formStatus.textContent = 'Please enter a valid email, or leave it blank.';
+        formStatus.className = 'form-status error';
+        return;
+      }
+    }
+
     const payload = {
       name: fields.name,
-      email: fields.email,
+      email: fields.email || '',
       phone: fields.phone,
       service: fields.service,
       location: fields.location,

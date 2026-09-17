@@ -171,15 +171,16 @@ app.post('/api/contact', async (req, res) => {
     preferredTime,
   } = req.body;
 
-  if (!name?.trim() || !email?.trim() || !phone?.trim() || !service?.trim() || !location?.trim()) {
+  if (!name?.trim() || !phone?.trim() || !service?.trim() || !location?.trim()) {
     return res.status(400).json({
       success: false,
       error: 'Please fill in all required fields.',
     });
   }
 
+  const emailValue = email?.trim() || '';
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email.trim())) {
+  if (emailValue && !emailRegex.test(emailValue)) {
     return res.status(400).json({
       success: false,
       error: 'Please enter a valid email address.',
@@ -189,15 +190,16 @@ app.post('/api/contact', async (req, res) => {
   const bodyText = message?.trim() || 'No additional details provided.';
   const visitDate = preferredDate?.trim() || 'Flexible';
   const reachTime = preferredTime?.trim() || 'Anytime';
+  const emailDisplay = emailValue || 'Not provided';
 
   const mailOptions = {
     from: process.env.SMTP_USER || CONTACT_EMAIL,
     to: CONTACT_EMAIL,
-    replyTo: email.trim(),
+    ...(emailValue ? { replyTo: emailValue } : {}),
     subject: `Estimate Request: ${service.trim()} — ${location.trim()}`,
     text: [
       `Name: ${name.trim()}`,
-      `Email: ${email.trim()}`,
+      `Email: ${emailDisplay}`,
       `Phone: ${phone.trim()}`,
       `Service: ${service.trim()}`,
       `Location: ${location.trim()}`,
@@ -210,7 +212,7 @@ app.post('/api/contact', async (req, res) => {
     html: `
       <h2>New Estimate Request</h2>
       <p><strong>Name:</strong> ${escapeHtml(name.trim())}</p>
-      <p><strong>Email:</strong> ${escapeHtml(email.trim())}</p>
+      <p><strong>Email:</strong> ${escapeHtml(emailDisplay)}</p>
       <p><strong>Phone:</strong> ${escapeHtml(phone.trim())}</p>
       <p><strong>Service:</strong> ${escapeHtml(service.trim())}</p>
       <p><strong>Location:</strong> ${escapeHtml(location.trim())}</p>

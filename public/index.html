@@ -172,9 +172,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css?v=20260917b">
+  <link rel="stylesheet" href="/css/styles.css?v=20260917c">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="/" class="logo" aria-label="Louisville Drywall &amp; Painting LLC">
@@ -186,22 +187,18 @@
         <span></span>
         <span></span>
       </button>
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Primary">
         <a href="/services" class="nav__link">Services</a>
-        <a href="/brochure" class="nav__link">Brochure</a>
-        <a href="#jobs" class="nav__link">Patch Jobs</a>
         <a href="#gallery" class="nav__link">Our Work</a>
-        <a href="#areas" class="nav__link">Service Area</a>
         <a href="#reviews" class="nav__link">Reviews</a>
         <a href="#faq" class="nav__link">FAQ</a>
-        <a href="#schedule" class="nav__link nav__link--highlight">Schedule</a>
         <a href="tel:+15022180426" class="nav__link nav__link--phone" id="headerPhoneLink">(502) 218-0426</a>
-        <a href="#schedule" class="btn btn--primary nav__cta" id="headerScheduleBtn">Book Estimate</a>
+        <a href="#schedule" class="btn btn--primary nav__cta" id="headerScheduleBtn">Free Estimate</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
       <div class="hero__bg" aria-hidden="true">
         <img
@@ -217,28 +214,13 @@
         <p class="hero__eyebrow">Louisville · Rural Kentucky &amp; Southern Indiana</p>
         <h1 class="hero__title">Drywall Patching &amp; Repair in Louisville</h1>
         <p class="hero__subtitle">
-          Holes, cracks, water damage, and sheet replacements — we take the drywall patch jobs
-          other crews skip. Affordable local labor, free on-site estimates across Louisville, KY, and Southern Indiana.
+          Holes, cracks, water damage, and sheet replacements — we take the patch jobs other crews skip. Free on-site estimates.
         </p>
         <div class="hero__actions">
           <a href="#schedule" class="btn btn--primary btn--lg">Get Your Free Estimate</a>
           <a href="tel:+15022180426" class="btn btn--outline btn--lg" id="heroCallBtn">Call (502) 218-0426</a>
-          <a href="/brochure" class="btn btn--outline btn--lg">View Brochure</a>
         </div>
-        <div class="hero__stats">
-          <div class="stat">
-            <span class="stat__number stat__number--text">4.8★</span>
-            <span class="stat__label">Thumbtack · 6 Reviews</span>
-          </div>
-          <div class="stat">
-            <span class="stat__number stat__number--text">5.0★</span>
-            <span class="stat__label">Angi · 3 Reviews</span>
-          </div>
-          <div class="stat">
-            <span class="stat__number stat__number--text">Free</span>
-            <span class="stat__label">On-Site Estimates</span>
-          </div>
-        </div>
+        <p class="hero__reassure">4.8★ Thumbtack · 5.0★ Angi · We usually reply within 1 business day</p>
       </div>
     </section>
 
@@ -310,20 +292,7 @@
             </a>
           </article>
         </div>
-        <div class="services__areas">
-          <h3 class="services__areas-title">Where we provide these services</h3>
-          <div class="areas__summary">
-            <div class="areas__group areas__group--wide">
-              <h4 class="areas__heading">Louisville metro &amp; nearby</h4>
-              <p class="areas__text">Louisville and surrounding communities throughout the greater metro area — homes, basements, garages, and remodels we can reach by road.</p>
-            </div>
-            <div class="areas__group areas__group--wide">
-              <h4 class="areas__heading">Kentucky &amp; Southern Indiana</h4>
-              <p class="areas__text">We also travel to rural towns and country homes across Kentucky and Southern Indiana for drywall and painting work.</p>
-            </div>
-          </div>
-          <p class="services__areas-note"><strong>Not sure if we serve your area?</strong> <a href="#schedule">Contact us</a> with your town — we'll confirm whether we can come out before scheduling your free estimate.</p>
-        </div>
+        <p class="services__areas-note"><strong>Serving Louisville, rural KY &amp; Southern Indiana.</strong> Not sure we cover your town? <a href="#schedule">Ask when you book</a> — we’ll confirm before the visit.</p>
       </div>
     </section>
 
@@ -363,59 +332,6 @@
         <div class="jobs__cta">
           <a href="#schedule" class="btn btn--primary">Book a Patch Job Estimate</a>
           <a href="/drywall-repair" class="btn btn--outline-primary">See Repair Details</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="brochure section section--compact" id="brochure">
-      <div class="container brochure-home">
-        <div class="section__header section__header--tight">
-          <p class="section__eyebrow">Homeowner Guide</p>
-          <h2 class="section__title">Our Service Brochure</h2>
-          <p class="section__desc">Small preview below — scroll to see all 3 pages, then open the full brochure for a larger read.</p>
-        </div>
-
-        <div class="brochure-mini">
-          <p class="brochure-mini__hint">↕ Scroll to preview</p>
-          <div class="brochure-mini__scroll" tabindex="0" aria-label="Small scrollable brochure preview">
-            <figure class="brochure-mini__page">
-              <img src="/images/brochure-page-1.png" alt="Louisville Drywall &amp; Painting brochure preview" width="850" height="1100" loading="lazy">
-            </figure>
-            <figure class="brochure-mini__page">
-              <img src="/images/brochure-page-2.png" alt="Louisville Drywall &amp; Painting brochure preview" width="850" height="1100" loading="lazy">
-            </figure>
-            <figure class="brochure-mini__page">
-              <img src="/images/brochure-page-3.png" alt="Louisville Drywall &amp; Painting brochure preview" width="850" height="1100" loading="lazy">
-            </figure>
-          </div>
-          <div class="brochure-mini__cta">
-            <a href="/brochure" class="btn btn--primary btn--sm">Open Full Brochure</a>
-            <a href="/docs/louisville-drywall-painting-homeowner-brochure.pdf" class="btn btn--outline-primary btn--sm" download>PDF</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pricing section section--alt" id="affordable">
-      <div class="container">
-        <div class="section__header">
-          <p class="section__eyebrow">Fair Pricing</p>
-          <h2 class="section__title">Quality Work at Affordable Rates</h2>
-          <p class="section__desc">We're a small crew — not a big contractor with layers of markup. You get honest pricing, a clear quote on-site, and labor rates that work for rural homeowners.</p>
-        </div>
-        <div class="pricing__grid">
-          <article class="pricing-card pricing-card--featured">
-            <p class="pricing-card__label">Small team savings</p>
-            <p class="pricing-card__text">Low overhead means we can offer fair, affordable labor rates without cutting corners on the finish.</p>
-          </article>
-          <article class="pricing-card pricing-card--featured">
-            <p class="pricing-card__label">Free on-site quotes</p>
-            <p class="pricing-card__text">Every project is different. We come to you, measure the job, and give you a straightforward labor quote — no surprises.</p>
-          </article>
-        </div>
-        <div class="pricing__note">
-          <h3 class="pricing__note-title">You buy your own materials — we keep labor affordable</h3>
-          <p>We do not mark up drywall, mud, tape, primer, or paint. You pick what you want from the store and we charge only for skilled labor — that keeps your total project cost down. Repairs and small jobs are quoted separately — <a href="#schedule">get your free estimate</a>.</p>
         </div>
       </div>
     </section>
@@ -465,7 +381,7 @@
             </div>
           </div>
         <div class="areas__cta">
-          <p class="areas__note"><strong>Not sure if we serve your area?</strong> Call, email, or use the contact form below with your town and project details — we'll let you know if we can come out to you.</p>
+          <p class="areas__note"><strong>Not sure if we serve your area?</strong> Include your town when you book — we’ll confirm before scheduling.</p>
           <div class="areas__cta-actions">
             <a href="#schedule" class="btn btn--primary">Ask About Your Area</a>
             <a href="tel:+15022180426" class="btn btn--outline-primary">Call (502) 218-0426</a>
@@ -474,21 +390,25 @@
       </div>
     </section>
 
-    <section class="about section section--alt" id="about">
+    <section class="pricing section section--compact section--alt" id="affordable">
+      <div class="container">
+        <div class="pricing__note pricing__note--solo">
+          <h2 class="pricing__note-title">Fair labor pricing — you buy the materials</h2>
+          <p>We’re a small crew with low overhead. Free on-site quotes, no material markup, and a clear labor price before work starts. <a href="#schedule">Get your free estimate</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
       <div class="container about__grid">
         <div class="about__content">
           <p class="section__eyebrow">About Us</p>
-          <h2 class="section__title">Louisville Drywall &amp; Painting LLC</h2>
+          <h2 class="section__title">A small Louisville crew you can reach</h2>
           <p class="about__text">
-            Louisville Drywall &amp; Painting LLC is a small, locally run crew — not a big company. Homeowners call us most often for drywall patching and repair jobs: holes, cracks, water damage, and sheet replacements that need to look seamless.
-          </p>
-          <p class="about__text">
-            Whether you need one wall patched in Louisville or a full basement finish in a rural town, we show up when we say we will and treat your home with respect.
+            Louisville Drywall &amp; Painting LLC is locally run — not a big contractor. Homeowners call us most for patching and repair: holes, cracks, water damage, and sheet replacements that need to look seamless.
           </p>
           <ul class="about__list">
-            <li>Drywall patching &amp; repair specialists</li>
-            <li>Small local Louisville team</li>
-            <li>Rural Kentucky &amp; Southern Indiana</li>
+            <li>Patch &amp; repair specialists</li>
             <li>Free on-site estimates</li>
             <li>Install, finish &amp; paint available</li>
           </ul>
@@ -499,7 +419,7 @@
           </div>
           <div class="about__card">
             <span class="about__card-label">Ready to start?</span>
-            <p class="about__card-text">Reach out today for a fast, no-obligation quote.</p>
+            <p class="about__card-text">Free estimate. No obligation.</p>
             <a href="#schedule" class="btn btn--primary">Book Your Visit</a>
           </div>
         </div>
@@ -511,9 +431,9 @@
         <div class="section__header">
           <p class="section__eyebrow">Customer Reviews</p>
           <h2 class="section__title">What Homeowners Say</h2>
-          <p class="section__desc"><strong>4.8★ on Thumbtack</strong> (6 reviews) · <strong>5.0★ on Angi</strong> (3 reviews). Customers highlight work quality, professionalism, and responsiveness.</p>
+          <p class="section__desc"><strong>4.8★ on Thumbtack</strong> (6 reviews) · <strong>5.0★ on Angi</strong> (3 reviews)</p>
         </div>
-        <div class="reviews__grid">
+        <div class="reviews__grid reviews__grid--compact">
           <article class="review-card">
             <p class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</p>
             <p class="review-card__text">“Great people, went the extra mile and stayed from 12 noon to 2am next day due to issues with some of the woodwork, would recommend.”</p>
@@ -521,7 +441,7 @@
           </article>
           <article class="review-card">
             <p class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</p>
-            <p class="review-card__text">“Mohamed did a good job assessing the best approach for the drywall project. He explained each step and kept me informed on the schedule for the duration of the work.”</p>
+            <p class="review-card__text">“Mohamed did a good job assessing the best approach for the drywall project. He explained each step and kept me informed on the schedule.”</p>
             <p class="review-card__meta"><strong>Greg W.</strong> · Thumbtack</p>
           </article>
           <article class="review-card">
@@ -529,30 +449,13 @@
             <p class="review-card__text">“Respond quickly, and the tech came early and left late, working with them was amazing.”</p>
             <p class="review-card__meta"><strong>Brian G.</strong> · Thumbtack</p>
           </article>
-          <article class="review-card">
-            <p class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</p>
-            <p class="review-card__text">“Generally nice people who live in my area, had them do some drywall for my garage, small team but they do good work, simple to deal with.”</p>
-            <p class="review-card__meta"><strong>Daniel R.</strong> · Angi</p>
-          </article>
-          <article class="review-card">
-            <p class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</p>
-            <p class="review-card__text">“Had them do the walls and ceilings they did them well.”</p>
-            <p class="review-card__meta"><strong>David W.</strong> · Angi / Thumbtack</p>
-          </article>
-          <article class="review-card review-card--cta">
-            <p class="review-card__stars" aria-hidden="true">★</p>
-            <h3 class="review-card__title">See all reviews</h3>
-            <p class="review-card__text">Read more on Thumbtack and Angi, or leave a review if we worked on your home.</p>
-            <a href="https://www.thumbtack.com/ky/louisville/drywall-repair/louisville-drywall-painting/service/581785818697179146" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Thumbtack Reviews</a>
-          </article>
         </div>
         <div class="reviews__cta">
-          <p><strong>Thumbtack Top Pro · 4.8★ (6 reviews)</strong> · Angi <strong>5.0★ (3 reviews)</strong>. Worked with us? A short review helps other Louisville homeowners find a local crew.</p>
+          <p>Read more on trusted sites, or leave a review if we worked on your home.</p>
           <div class="reviews__links">
-            <a href="https://www.thumbtack.com/ky/louisville/drywall-repair/louisville-drywall-painting/service/581785818697179146" class="reviews__link" target="_blank" rel="noopener noreferrer">Review on Thumbtack</a>
-            <a href="https://www.angi.com/companylist/us/ky/louisville/louisville-drywall-and-paints-reviews-162824847.htm" class="reviews__link" target="_blank" rel="noopener noreferrer">Review on Angi</a>
-            <a href="https://www.yelp.com/biz/louisville-drywall-and-painting-louisville" class="reviews__link" target="_blank" rel="noopener noreferrer">Review on Yelp</a>
-            <a href="https://www.facebook.com/profile.php?id=61590733854853" class="reviews__link" target="_blank" rel="noopener noreferrer">Review on Facebook</a>
+            <a href="https://www.thumbtack.com/ky/louisville/drywall-repair/louisville-drywall-painting/service/581785818697179146" class="reviews__link" target="_blank" rel="noopener noreferrer">Thumbtack</a>
+            <a href="https://www.angi.com/companylist/us/ky/louisville/louisville-drywall-and-paints-reviews-162824847.htm" class="reviews__link" target="_blank" rel="noopener noreferrer">Angi</a>
+            <a href="https://www.yelp.com/biz/louisville-drywall-and-painting-louisville" class="reviews__link" target="_blank" rel="noopener noreferrer">Yelp</a>
           </div>
         </div>
       </div>
@@ -593,38 +496,66 @@
       </div>
     </section>
 
-    <section class="steps section section--alt" id="how-it-works">
+    <section class="brochure section section--compact section--alt" id="brochure">
+      <div class="container brochure-home">
+        <div class="section__header section__header--tight">
+          <p class="section__eyebrow">Homeowner Guide</p>
+          <h2 class="section__title">Service Brochure</h2>
+          <p class="section__desc">A quick look at how we work — scroll the preview or open the full version.</p>
+        </div>
+        <div class="brochure-mini">
+          <p class="brochure-mini__hint">↕ Scroll to preview</p>
+          <div class="brochure-mini__scroll" tabindex="0" aria-label="Small scrollable brochure preview">
+            <figure class="brochure-mini__page">
+              <img src="/images/brochure-page-1.png" alt="Louisville Drywall &amp; Painting brochure preview" width="850" height="1100" loading="lazy">
+            </figure>
+            <figure class="brochure-mini__page">
+              <img src="/images/brochure-page-2.png" alt="Louisville Drywall &amp; Painting brochure preview" width="850" height="1100" loading="lazy">
+            </figure>
+            <figure class="brochure-mini__page">
+              <img src="/images/brochure-page-3.png" alt="Louisville Drywall &amp; Painting brochure preview" width="850" height="1100" loading="lazy">
+            </figure>
+          </div>
+          <div class="brochure-mini__cta">
+            <a href="/brochure" class="btn btn--primary btn--sm">Open Full Brochure</a>
+            <a href="/docs/louisville-drywall-painting-homeowner-brochure.pdf" class="btn btn--outline-primary btn--sm" download>PDF</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps section" id="how-it-works">
       <div class="container">
         <div class="section__header">
           <p class="section__eyebrow">Simple Process</p>
-          <h2 class="section__title">Schedule a Free Estimate in 3 Steps</h2>
-          <p class="section__desc">No pressure, no obligation. Tell us about your project and we'll set up a time to come look at the job.</p>
+          <h2 class="section__title">Get a Free Estimate in 3 Steps</h2>
+          <p class="section__desc">No pressure. Tell us about the job and we’ll set a time to come look.</p>
         </div>
         <ol class="steps__grid">
           <li class="step-card">
             <span class="step-card__number" aria-hidden="true">1</span>
             <h3 class="step-card__title">Tell us what you need</h3>
-            <p class="step-card__text">Pick your service, enter your town, and share a few project details. Takes about 2 minutes.</p>
+            <p class="step-card__text">Service, town, and your phone — about a minute.</p>
           </li>
           <li class="step-card">
             <span class="step-card__number" aria-hidden="true">2</span>
             <h3 class="step-card__title">We confirm your visit</h3>
-            <p class="step-card__text">We'll call or text within one business day to confirm a time for your free on-site estimate.</p>
+            <p class="step-card__text">We’ll call or text within one business day.</p>
           </li>
           <li class="step-card">
             <span class="step-card__number" aria-hidden="true">3</span>
             <h3 class="step-card__title">Get your quote on-site</h3>
-            <p class="step-card__text">We come to your home, measure the space, and give you a clear labor quote — you buy your own materials.</p>
+            <p class="step-card__text">Clear labor quote before any work starts. You buy materials.</p>
           </li>
         </ol>
         <div class="steps__cta">
-          <a href="#schedule" class="btn btn--primary btn--lg">Start Scheduling</a>
+          <a href="#schedule" class="btn btn--primary btn--lg">Request Free Estimate</a>
           <p class="steps__cta-note">Prefer to talk? <a href="tel:+15022180426" id="stepsCallLink">Call (502) 218-0426</a></p>
         </div>
       </div>
     </section>
 
-    <section class="contact section" id="schedule">
+    <section class="contact section section--alt" id="schedule">
       <div class="container contact__grid">
         <div class="contact__info">
           <p class="section__eyebrow">Free On-Site Estimate</p>
@@ -636,7 +567,6 @@
 
           <ul class="schedule-checklist">
             <li>Patch jobs &amp; small repairs welcome</li>
-            <li>Louisville metro &amp; surrounding areas</li>
             <li>Free estimate, no obligation</li>
             <li>We call back within 1 business day</li>
           </ul>
@@ -648,7 +578,7 @@
               </span>
               <div>
                 <span class="contact__item-label">Service Area</span>
-                <span class="contact__item-value">Louisville &amp; surrounding areas · KY &amp; Southern IN</span>
+                <span class="contact__item-value">Louisville &amp; surrounding · KY &amp; Southern IN</span>
               </div>
             </div>
             <a href="tel:+15022180426" class="contact__item" id="contactPhoneLink">
@@ -656,7 +586,7 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </span>
               <div>
-                <span class="contact__item-label">Phone</span>
+                <span class="contact__item-label">Call now</span>
                 <span class="contact__item-value" id="contactPhone">(502) 218-0426</span>
               </div>
             </a>
@@ -669,52 +599,13 @@
                 <span class="contact__item-value" id="contactEmail">quotes@louisvilledrywallpaints.org</span>
               </div>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61590733854853" class="contact__item" target="_blank" rel="noopener noreferrer">
-              <span class="contact__item-icon contact__item-icon--svg" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-              </span>
-              <div>
-                <span class="contact__item-label">Facebook</span>
-                <span class="contact__item-value">Louisville Drywall &amp; Paints</span>
-              </div>
-            </a>
-            <a href="https://www.thumbtack.com/ky/louisville/drywall-repair/louisville-drywall-painting/service/581785818697179146" class="contact__item" target="_blank" rel="noopener noreferrer">
-              <span class="contact__item-icon contact__item-icon--svg" aria-hidden="true">★</span>
-              <div>
-                <span class="contact__item-label">Thumbtack</span>
-                <span class="contact__item-value">4.8★ · 6 reviews · Top Pro</span>
-              </div>
-            </a>
-            <a href="https://www.yelp.com/biz/louisville-drywall-and-painting-louisville" class="contact__item" target="_blank" rel="noopener noreferrer">
-              <span class="contact__item-icon contact__item-icon--svg" aria-hidden="true">★</span>
-              <div>
-                <span class="contact__item-label">Yelp</span>
-                <span class="contact__item-value">Louisville Drywall and Painting</span>
-              </div>
-            </a>
-            <a href="https://www.angi.com/companylist/us/ky/louisville/louisville-drywall-and-paints-reviews-162824847.htm" class="contact__item" target="_blank" rel="noopener noreferrer">
-              <span class="contact__item-icon contact__item-icon--svg" aria-hidden="true">★</span>
-              <div>
-                <span class="contact__item-label">Angi</span>
-                <span class="contact__item-value">5.0★ · 3 reviews</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="social-share" aria-label="Share this page">
-            <p class="social-share__label">Share this page</p>
-            <div class="social-share__links">
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flouisvilledrywallpaints.com%2F" class="social-share__link" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
-              <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flouisvilledrywallpaints.com%2F&amp;text=Louisville%20Drywall%20%26%20Painting%20LLC%20%E2%80%94%20free%20estimates%20in%20rural%20KY%20%26%20Southern%20IN" class="social-share__link" target="_blank" rel="noopener noreferrer">Share on X</a>
-              <a href="mailto:?subject=Louisville%20Drywall%20%26%20Painting%20LLC&amp;body=Check%20out%20Louisville%20Drywall%20%26%20Painting%20for%20drywall%20and%20painting%20in%20rural%20KY%20and%20Southern%20IN%3A%20https%3A%2F%2Flouisvilledrywallpaints.com%2F" class="social-share__link">Share by Email</a>
-            </div>
           </div>
         </div>
 
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-header">
             <h3 class="form-header__title">Request Your Free Estimate</h3>
-            <p class="form-header__desc">Fields marked with * are required.</p>
+            <p class="form-header__desc">Takes about a minute. We’ll confirm your visit by phone.</p>
           </div>
 
           <div class="form-group">
@@ -733,7 +624,6 @@
           <div class="form-group">
             <label for="location">Your town or city *</label>
             <input type="text" id="location" name="location" required autocomplete="address-level2" placeholder="e.g. Louisville, Shelbyville, Corydon">
-            <p class="form-hint">Enter your town so we can confirm we serve your area.</p>
           </div>
 
           <div class="form-row">
@@ -743,42 +633,44 @@
             </div>
             <div class="form-group">
               <label for="phone">Phone *</label>
-              <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(502) 555-0123">
+              <input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="tel" placeholder="(502) 555-0123">
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="preferredDate">Preferred visit date</label>
-              <input type="date" id="preferredDate" name="preferredDate">
-              <p class="form-hint">Optional — we'll confirm the exact time by phone.</p>
+          <details class="form-more">
+            <summary class="form-more__summary">Add optional details</summary>
+            <div class="form-more__body">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="preferredDate">Preferred visit date</label>
+                  <input type="date" id="preferredDate" name="preferredDate">
+                </div>
+                <div class="form-group">
+                  <label for="preferredTime">Best time to reach you</label>
+                  <select id="preferredTime" name="preferredTime">
+                    <option value="Anytime">Anytime</option>
+                    <option value="Morning (8 AM – 12 PM)">Morning (8 AM – 12 PM)</option>
+                    <option value="Afternoon (12 PM – 5 PM)">Afternoon (12 PM – 5 PM)</option>
+                    <option value="Evening (5 PM – 7 PM)">Evening (5 PM – 7 PM)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Project details</label>
+                <textarea id="message" name="message" rows="3" placeholder="e.g. doorknob hole in hallway, water stain on ceiling…"></textarea>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="preferredTime">Best time to reach you</label>
-              <select id="preferredTime" name="preferredTime">
-                <option value="Anytime">Anytime</option>
-                <option value="Morning (8 AM – 12 PM)">Morning (8 AM – 12 PM)</option>
-                <option value="Afternoon (12 PM – 5 PM)">Afternoon (12 PM – 5 PM)</option>
-                <option value="Evening (5 PM – 7 PM)">Evening (5 PM – 7 PM)</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Project details</label>
-            <textarea id="message" name="message" rows="4" placeholder="e.g. doorknob hole in hallway, water stain on ceiling, crack along the seam, how many rooms…"></textarea>
-          </div>
+          </details>
 
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
           <button type="submit" class="btn btn--primary btn--lg btn--full" id="submitBtn">
             Request Free Estimate
           </button>
-          <p class="form-footer-note">We'll contact you within 1 business day to schedule your on-site visit.</p>
+          <p class="form-footer-note">We’ll contact you within 1 business day. Or call <a href="tel:+15022180426">(502) 218-0426</a> now.</p>
         </form>
       </div>
     </section>
@@ -835,10 +727,10 @@
   </footer>
 
   <aside class="sticky-cta" id="stickyCta" aria-label="Quick actions">
-    <a href="#schedule" class="sticky-cta__primary">Book Free Estimate</a>
     <a href="tel:+15022180426" class="sticky-cta__call" id="stickyCallBtn" aria-label="Call (502) 218-0426">Call Now</a>
+    <a href="#schedule" class="sticky-cta__primary">Free Estimate</a>
   </aside>
 
-  <script src="/js/main.js?v=20260917b"></script>
+  <script src="/js/main.js?v=20260917c"></script>
 </body>
 </html>

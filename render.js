@@ -86,16 +86,13 @@ function headerHtml() {
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Primary">
         <a href="/services" class="nav__link">Services</a>
-        <a href="/brochure" class="nav__link">Brochure</a>
-        <a href="/#jobs" class="nav__link">Patch Jobs</a>
         <a href="/#gallery" class="nav__link">Our Work</a>
-        <a href="/#areas" class="nav__link">Service Area</a>
         <a href="/#reviews" class="nav__link">Reviews</a>
-        <a href="/#schedule" class="nav__link nav__link--highlight">Schedule</a>
+        <a href="/#faq" class="nav__link">FAQ</a>
         <a href="${telHref()}" class="nav__link nav__link--phone">${BUSINESS.phoneDisplay}</a>
-        <a href="/#schedule" class="btn btn--primary nav__cta">Book Estimate</a>
+        <a href="/#schedule" class="btn btn--primary nav__cta">Free Estimate</a>
       </nav>
     </div>
   </header>`;
@@ -143,8 +140,8 @@ function footerHtml() {
     </div>
   </footer>
   <aside class="sticky-cta" id="stickyCta" aria-label="Quick actions">
-    <a href="/#schedule" class="sticky-cta__primary">Book Free Estimate</a>
     <a href="${telHref()}" class="sticky-cta__call">Call Now</a>
+    <a href="/#schedule" class="sticky-cta__primary">Free Estimate</a>
   </aside>`;
 }
 
@@ -181,13 +178,14 @@ function pageShell({ title, description, canonical, schema, body }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css?v=20260917b">
+  <link rel="stylesheet" href="/css/styles.css?v=20260917c">
   </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   ${headerHtml()}
-  <main>${body}</main>
+  <main id="main">${body}</main>
   ${footerHtml()}
-  <script src="/js/main.js?v=20260917b"></script>
+  <script src="/js/main.js?v=20260917c"></script>
 </body>
 </html>`;
 }

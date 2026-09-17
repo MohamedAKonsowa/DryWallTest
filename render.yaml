@@ -21,8 +21,6 @@ services:
         value: louisvilledrywallpaints.com
       - key: SECONDARY_DOMAIN
         value: drywall-contractors.org
-      - key: CONTACT_PHONE
-        value: "+1 5022180426"
       - key: WEB3FORMS_ACCESS_KEY
         sync: false
       - key: SMTP_USER

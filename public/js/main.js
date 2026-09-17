@@ -48,15 +48,16 @@
         el.textContent = `Call ${formatPhoneDisplay(phone)}`;
       } else if (id === 'stickyCallBtn') {
         el.textContent = 'Call Now';
+        el.setAttribute('aria-label', `Call ${formatPhoneDisplay(phone)}`);
       } else if (id === 'footerPhoneLink') {
-        el.textContent = 'Call Us Today';
+        el.textContent = `Call ${formatPhoneDisplay(phone)}`;
       } else {
         el.textContent = 'Call';
       }
     });
 
     const phoneDisplay = document.getElementById('contactPhone');
-    if (phoneDisplay) phoneDisplay.textContent = phone;
+    if (phoneDisplay) phoneDisplay.textContent = formatPhoneDisplay(phone);
   }
 
   function formatPhoneDisplay(phone) {
@@ -102,7 +103,14 @@
     try {
       const res = await fetch('/api/config');
       if (res.ok) {
-        config = await res.json();
+        const remote = await res.json();
+        config = {
+          ...FALLBACK,
+          ...remote,
+          // Keep phone from the shipped site build — do not let a stale server env var overwrite it.
+          phone: FALLBACK.phone,
+          phoneLink: FALLBACK.phoneLink,
+        };
       }
     } catch (_) {
       /* use fallback */

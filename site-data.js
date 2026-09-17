@@ -102,6 +102,18 @@ const SERVICES = [
 
 const LOCATIONS = [
   {
+    slug: 'louisville-ky',
+    path: '/drywall-contractor-louisville-ky',
+    city: 'Louisville',
+    state: 'Kentucky',
+    stateAbbr: 'KY',
+    title: 'Drywall Patching & Repair in Louisville, KY | Louisville Drywall & Painting LLC',
+    description:
+      'Drywall patching and repair in Louisville, KY — holes, cracks, water damage, sheet replacement, finishing, and paint. Free estimates. Call (502) 218-0426.',
+    intro:
+      'Based in Louisville, we handle drywall patch jobs and repairs across the metro — nail holes, doorknob damage, crack repair, water-damaged sheets, ceiling patches, plus installation, finishing, and paint touch-ups.',
+  },
+  {
     slug: 'shelbyville-ky',
     path: '/drywall-contractor-shelbyville-ky',
     city: 'Shelbyville',

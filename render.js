@@ -21,6 +21,7 @@ function businessSchema() {
     description:
       'Louisville Drywall & Painting LLC — drywall patching, hole and crack repair, sheet replacement, finishing, and interior painting in Louisville, KY and surrounding areas.',
     image: `${BUSINESS.siteUrl}/images/work-vaulted.png`,
+    logo: `${BUSINESS.siteUrl}/images/logo.png`,
     priceRange: '$',
     address: {
       '@type': 'PostalAddress',
@@ -70,6 +71,10 @@ function breadcrumbs(items) {
     .join('');
 }
 
+function telHref() {
+  return `tel:${BUSINESS.phone.replace(/\s/g, '')}`;
+}
+
 function headerHtml() {
   return `<header class="header" id="header">
     <div class="container header__inner">
@@ -82,6 +87,7 @@ function headerHtml() {
       </button>
       <nav class="nav" id="nav">
         <a href="/services" class="nav__link">Services</a>
+        <a href="/#jobs" class="nav__link">Patch Jobs</a>
         <a href="/#gallery" class="nav__link">Our Work</a>
         <a href="/#areas" class="nav__link">Service Area</a>
         <a href="/#reviews" class="nav__link">Reviews</a>
@@ -119,7 +125,7 @@ function footerHtml() {
           <h3 class="footer__col-title">Contact</h3>
           <nav class="footer__col-links">
             <a href="/#schedule">Book a Visit</a>
-            <a href="tel:+15022180426">Call ${BUSINESS.phoneDisplay}</a>
+            <a href="${telHref()}">Call ${BUSINESS.phoneDisplay}</a>
             <a href="mailto:${BUSINESS.email}">${BUSINESS.email}</a>
             <a href="${BUSINESS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
             <a href="${BUSINESS.thumbtack}" target="_blank" rel="noopener noreferrer">Thumbtack</a>
@@ -134,7 +140,7 @@ function footerHtml() {
   </footer>
   <aside class="sticky-cta" id="stickyCta" aria-label="Quick actions">
     <a href="/#schedule" class="sticky-cta__primary">Book Free Estimate</a>
-    <a href="tel:+15022180426" class="sticky-cta__call">Call Now</a>
+    <a href="${telHref()}" class="sticky-cta__call">Call Now</a>
   </aside>`;
 }
 
@@ -201,7 +207,7 @@ function serviceAreasBlock() {
           <p class="areas__note"><strong>Not sure if we serve your area?</strong> Call, email, or use the contact form with your town — we'll let you know if we can come out to you.</p>
           <div class="areas__cta-actions">
             <a href="${scheduleLink()}" class="btn btn--primary">Ask About Your Area</a>
-            <a href="tel:+15022180426" class="btn btn--outline-primary">Call ${BUSINESS.phoneDisplay}</a>
+            <a href="${telHref()}" class="btn btn--outline-primary">Call ${BUSINESS.phoneDisplay}</a>
           </div>
         </div>
       </div>
@@ -225,7 +231,7 @@ function ctaBand(serviceName, locationHint) {
       <p class="page-cta__text">Patch jobs, repairs, installs, and paint — free on-site quote, no obligation.</p>
       <div class="page-cta__actions">
         <a href="${scheduleUrl}" class="btn btn--primary btn--lg">Schedule Free Estimate</a>
-        <a href="tel:+15022180426" class="btn btn--outline-dark btn--lg">Call ${BUSINESS.phoneDisplay}</a>
+        <a href="${telHref()}" class="btn btn--outline-dark btn--lg">Call ${BUSINESS.phoneDisplay}</a>
       </div>
     </div>
   </section>`;
@@ -505,7 +511,7 @@ function renderPoliciesPage() {
           { label: 'Policies & Terms' },
         ])}</ol>
         <h1 class="page-hero__title">Policies &amp; Terms</h1>
-        <p class="page-hero__desc">Clear, straightforward policies for estimates, deposits, scheduling, and payment. Questions? <a href="tel:+15022180426">Call ${BUSINESS.phoneDisplay}</a> or <a href="/#schedule">contact us</a>.</p>
+        <p class="page-hero__desc">Clear, straightforward policies for estimates, deposits, scheduling, and payment. Questions? <a href="${telHref()}">Call ${BUSINESS.phoneDisplay}</a> or <a href="/#schedule">contact us</a>.</p>
       </div>
     </section>
     <section class="section">
@@ -591,7 +597,7 @@ function renderPoliciesPage() {
         <h2>Contact</h2>
         <p>Questions about these policies or your project?</p>
         <ul>
-          <li><strong>Phone:</strong> <a href="tel:+15022180426">${BUSINESS.phoneDisplay}</a></li>
+          <li><strong>Phone:</strong> <a href="${telHref()}">${BUSINESS.phoneDisplay}</a></li>
           <li><strong>Email:</strong> <a href="mailto:${BUSINESS.email}">${BUSINESS.email}</a></li>
           <li><strong>Schedule online:</strong> <a href="/#schedule">Request a free estimate</a></li>
         </ul>

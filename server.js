@@ -2,21 +2,22 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const nodemailer = require('nodemailer');
-const { SERVICES, LOCATIONS, getSitemapPaths } = require('./site-data');
+const { BUSINESS, SERVICES, LOCATIONS, getSitemapPaths } = require('./site-data');
 const { renderServicePage, renderLocationPage, renderServicesHub, renderPoliciesPage } = require('./render');
 
 const app = express();
 app.disable('x-powered-by');
 const PORT = process.env.PORT || 3000;
 
-const SITE_URL = process.env.SITE_URL || 'https://louisvilledrywallpaints.com';
+const SITE_URL = process.env.SITE_URL || BUSINESS.siteUrl;
 const PRIMARY_DOMAIN = process.env.PRIMARY_DOMAIN || 'louisvilledrywallpaints.com';
 const SECONDARY_DOMAIN = process.env.SECONDARY_DOMAIN || 'drywall-contractors.org';
 const SITE_DOMAINS = [PRIMARY_DOMAIN, SECONDARY_DOMAIN].filter(
   (domain, index, list) => domain && list.indexOf(domain) === index
 );
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'quotes@louisvilledrywallpaints.org';
-const CONTACT_PHONE = process.env.CONTACT_PHONE || '+1 5022180426';
+// Phone/email for the site come from site-data so stale Render env vars cannot overwrite them.
+const CONTACT_EMAIL = BUSINESS.email;
+const CONTACT_PHONE = BUSINESS.phone;
 
 app.use(express.json());
 
@@ -81,7 +82,12 @@ LOCATIONS.forEach((location) => {
   });
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  express.static(path.join(__dirname, 'public'), {
+    maxAge: process.env.NODE_ENV === 'production' ? '7d' : 0,
+    etag: true,
+  })
+);
 
 const SMTP_TIMEOUT_MS = 15000;
 

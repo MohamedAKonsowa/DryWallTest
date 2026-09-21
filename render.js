@@ -178,14 +178,14 @@ function pageShell({ title, description, canonical, schema, body }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css?v=20260917c">
+  <link rel="stylesheet" href="/css/styles.css?v=20260921a">
   </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   ${headerHtml()}
   <main id="main">${body}</main>
   ${footerHtml()}
-  <script src="/js/main.js?v=20260917c"></script>
+  <script src="/js/main.js?v=20260921a"></script>
 </body>
 </html>`;
 }
@@ -303,11 +303,11 @@ function renderServicePage(service) {
             service.slug === 'drywall-repair'
               ? `<h2>Patch jobs we handle every week</h2>
           <p>Most calls are for everyday drywall patching: nail and screw holes after removing shelves or TVs, doorknob holes in hallways, cracks along seams and corners, water stains on ceilings, and replacing a soft or damaged sheet. We also blend texture so the patch matches the rest of the wall before paint.</p>
-          <p>Small single-wall patches and multi-room repair jobs are both welcome — tell us what you see and we'll quote the labor on-site.</p>`
+          <p>Small single-wall patches and multi-room repair jobs are both welcome — tell us what you see and we'll quote the job on-site.</p>`
               : ''
           }
           <h2>Why choose our small crew?</h2>
-          <p>We're not a big contractor with layers of markup. Louisville Drywall &amp; Painting LLC is a local crew that shows up when we say we will, keeps rates affordable, and treats your home with respect. You buy your own materials — we charge fair labor-only pricing.</p>
+          <p>We're not a big contractor with layers of markup. Louisville Drywall &amp; Painting LLC is a local crew that shows up when we say we will, keeps rates affordable, and treats your home with respect. Every job starts with a clear on-site quote.</p>
           <p>We serve Louisville homeowners plus farmhouses, country homes, basements, garages, and room remodels throughout surrounding Kentucky and Southern Indiana.</p>
           <h2>Not sure if we serve your area?</h2>
           <p>Contact us with your town or address and we'll confirm whether we can come out before scheduling your free on-site estimate. We cover Louisville and surrounding communities, plus many rural areas across KY and Southern IN.</p>
@@ -389,7 +389,7 @@ function renderLocationPage(location) {
             <li>Interior painting and touch-ups after patch jobs</li>
           </ul>
           <h2>Affordable patch &amp; repair rates for ${escapeHtml(location.city)} homeowners</h2>
-          <p>We're a small Louisville-based crew with low overhead, so we keep labor rates fair for everyday patch jobs and larger repairs. Every job starts with a free on-site estimate — no pressure, no hidden fees. You purchase your own drywall, mud, tape, and paint.</p>
+          <p>We're a small Louisville-based crew with low overhead, so we keep rates fair for everyday patch jobs and larger repairs. Every job starts with a free on-site estimate — no pressure, no hidden fees.</p>
           <h2>Nearby areas we also serve</h2>
           <p class="page-areas">${LOCATIONS.filter((l) => l.slug !== location.slug)
             .slice(0, 5)
@@ -533,8 +533,8 @@ function renderPoliciesPage() {
 
         <h2>Deposits</h2>
         <ul>
-          <li>For any job with a total labor quote <strong>over $1,000</strong>, we require a <strong>15% deposit</strong> to reserve your project on our schedule.</li>
-          <li>The deposit is calculated from the agreed labor total shown on your estimate.</li>
+          <li>For any job with a total quote <strong>over $1,000</strong>, we require a <strong>15% deposit</strong> to reserve your project on our schedule.</li>
+          <li>The deposit is calculated from the agreed total shown on your estimate.</li>
           <li>Deposits are due before work is scheduled or before materials are staged, whichever comes first.</li>
           <li>Jobs under $1,000 generally do not require a deposit unless special ordering or scheduling arrangements are needed.</li>
           <li>Deposits are applied toward your final balance and are non-refundable if you cancel after we have reserved dates or declined other work to hold your slot.</li>
@@ -542,10 +542,9 @@ function renderPoliciesPage() {
 
         <h2>Materials</h2>
         <ul>
-          <li><strong>You purchase your own materials</strong> — including drywall, mud, tape, primer, paint, and related supplies.</li>
-          <li>We charge for labor only. This keeps your costs transparent and lets you choose the products you want.</li>
-          <li>Materials must be on-site and ready before we begin, unless otherwise agreed in writing.</li>
-          <li>We are not responsible for product defects, color mismatch, or manufacturer issues with customer-supplied materials.</li>
+          <li>Materials needed for your job are discussed and quoted during your free on-site estimate.</li>
+          <li>Unless otherwise agreed in writing, materials are part of the project scope we plan with you before work begins.</li>
+          <li>Product selections (for example paint color) can be confirmed with you before we purchase or apply them.</li>
         </ul>
 
         <h2>Scheduling &amp; access</h2>
@@ -580,7 +579,7 @@ function renderPoliciesPage() {
         <ul>
           <li>We stand behind our labor and take pride in professional drywall and painting finishes.</li>
           <li>If you have a concern about our work, notify us within <strong>14 days</strong> of completion so we can review the issue.</li>
-          <li>Warranty covers labor defects under normal use; it does not cover damage from moisture intrusion, structural movement, customer-supplied materials, or work performed by others after we leave.</li>
+          <li>Warranty covers workmanship defects under normal use; it does not cover damage from moisture intrusion, structural movement, or work performed by others after we leave.</li>
         </ul>
 
         <h2>Liability</h2>
